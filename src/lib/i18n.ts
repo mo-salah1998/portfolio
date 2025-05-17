@@ -20,7 +20,7 @@ const enTranslations = {
   experienceTitle: 'EXPERIENCE',
   // Footer
   footerText: 'Seasoned Full Stack Software Engineer with over 8 years of hands-on experience in designing and implementing robust, scalable, and innovative web solutions. Adept at leveraging a comprehensive skill set encompassing front-end and back-end technologies',
-  email: 'abmcodehub@gmail.com',
+  email: 'email',
 };
 
 // French translations
@@ -41,7 +41,7 @@ const frTranslations = {
   experienceTitle: 'EXPÉRIENCE',
   // Footer
   footerText: 'Ingénieur logiciel full stack expérimenté avec plus de 2 ans d\'expérience pratique dans la conception et la mise en œuvre de solutions web robustes, évolutives et innovantes. Habile à exploiter un ensemble complet de compétences englobant les technologies front-end et back-end',
-  email: 'abmcodehub@gmail.com',
+  email: 'email',
 };
 
 // Arabic translations

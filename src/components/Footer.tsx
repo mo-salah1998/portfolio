@@ -14,8 +14,8 @@ export const Footer = (): JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`${theme === 'dark' ? 'bg-[#1d1d1d]' : 'bg-gray-200'} py-16 px-4 md:px-6 lg:px-8 mt-20`}>
-      <div className="max-w-7xl mx-auto">
+    <footer className={`${theme === 'dark' ? 'bg-[#1d1d1d]' : 'bg-gray-200'} py-16 `}>
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between gap-10">
           {/* Contact Info */}
           <div className="md:w-1/2">
@@ -23,14 +23,14 @@ export const Footer = (): JSX.Element => {
               {t('getInTouch')}
             </h3>
             <div className="space-y-3">
-              <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                <span className="font-semibold">{t('email')}:</span> example@example.com
+              <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`} >
+                <span className="font-semibold">{t('email')}:</span> naija.mouhamedsalah@gmail.com
               </p>
               <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                <span className="font-semibold">{t('phone')}:</span> +1 234 567 890
+                <span className="font-semibold">{t('phone')}:</span> +216 50 01 13 66
               </p>
               <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                <span className="font-semibold">{t('location')}:</span> New York, USA
+                <span className="font-semibold">{t('location')}:</span> Tunis, Tunisia
               </p>
             </div>
           </div>

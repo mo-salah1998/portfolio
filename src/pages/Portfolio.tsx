@@ -27,7 +27,7 @@ export const Portfolio = (): JSX.Element => {
 
   return (
     <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} flex flex-row justify-center w-full`}>
-      <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} overflow-hidden w-full max-w-7xl relative`}>
+      <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} overflow-hidden relative`}>
         <Header />
 
         {/* Profile Section */}
@@ -118,7 +118,7 @@ export const Portfolio = (): JSX.Element => {
         <ExperienceSection />
 
         {/* Footer */}
-        <div id="contact">
+        <div id="contact" className="w-screen mt-12">
           <Footer />
         </div>
       </div>

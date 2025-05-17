@@ -28,7 +28,7 @@ export const ProjectSection = (): JSX.Element => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 w-full max-w-7xl mx-auto">
       {projects.map((project, index) => (
         <Card 
           key={index} 
