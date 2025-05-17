@@ -25,7 +25,7 @@ Naming Conventions
 TypeScript Usage
 - Use TypeScript for all code; prefer interfaces over types.
 - Avoid enums; use maps instead.
-- Use functional components with TypeScript interfaces.
+- Use functional components with TypeScript interfaces. 
 
 Syntax and Formatting
 - Use the "function" keyword for pure functions.
