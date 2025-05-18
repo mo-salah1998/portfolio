@@ -4,8 +4,9 @@ import { useTheme } from "../../lib/theme-context";
 import { Card } from "../ui/card";
 
 export const ProjectSection = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const isRTL = i18n.language === 'ar';
   
   // Sample project data
   const projects = [
@@ -34,7 +35,7 @@ export const ProjectSection = (): JSX.Element => {
           key={index} 
           className={`overflow-hidden ${theme === 'dark' ? 'bg-[#252525] border-gray-700' : 'bg-white border-gray-200'}`}
         >
-          <div>
+          <div className={`text-${isRTL ? 'right' : 'left'}`}>
             <div 
               className="w-full h-48 bg-cover bg-center" 
               style={{ backgroundImage: `url(${project.imageUrl})` }}
@@ -47,7 +48,7 @@ export const ProjectSection = (): JSX.Element => {
                 {project.description}
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
                 {project.technologies.map((tech, idx) => (
                   <span 
                     key={idx} 
@@ -62,7 +63,7 @@ export const ProjectSection = (): JSX.Element => {
                 ))}
               </div>
               
-              <div className="flex gap-3 mt-4">
+              <div className={`flex gap-3 mt-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
                 <a 
                   href={project.githubUrl} 
                   target="_blank" 

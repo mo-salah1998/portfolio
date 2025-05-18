@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CSSTransition } from 'react-transition-group';
 import { ChevronDown } from 'lucide-react';
 import { useTheme } from '../../lib/theme-context';
 
@@ -9,6 +8,7 @@ export const LanguageSwitcher: React.FC = () => {
   const { theme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const isRTL = i18n.language === 'ar';
   
   const languages = [
     { code: 'en', label: 'English' },
@@ -25,8 +25,15 @@ export const LanguageSwitcher: React.FC = () => {
     i18n.changeLanguage(lng);
     // If using Arabic, we need to set the dir attribute for RTL support
     document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lng;
     setIsOpen(false);
   };
+  
+  // Set initial direction on component mount
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, []);
   
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -43,7 +50,7 @@ export const LanguageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div className="language-dropdown" ref={dropdownRef}>
+    <div className="language-dropdown relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-opacity-20 hover:bg-opacity-30 transition-colors"
@@ -61,17 +68,24 @@ export const LanguageSwitcher: React.FC = () => {
         />
       </button>
       
-      <div className={`language-dropdown-menu ${theme === 'light' ? 'light' : ''} ${isOpen ? 'open' : ''}`}>
-        {languages.map((lang) => (
-          <button
-            key={lang.code}
-            onClick={() => changeLanguage(lang.code)}
-            className={`language-option ${theme === 'light' ? 'light' : ''} ${i18n.language === lang.code ? 'active' : ''} w-full text-left text-sm ${theme === 'dark' ? 'text-white/90' : 'text-gray-800'}`}
-          >
-            {lang.label}
-          </button>
-        ))}
-      </div>
+      {isOpen && (
+        <div 
+          className={`absolute ${isRTL ? 'right-0' : 'left-0'} top-full mt-2 p-2 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-[#2a2a2a]' : 'bg-white'} min-w-[120px] z-50`}
+        >
+          {languages.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => changeLanguage(lang.code)}
+              className={`w-full text-left px-3 py-2 rounded-md text-sm ${i18n.language === lang.code 
+                ? (theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900') 
+                : (theme === 'dark' ? 'text-white/90 hover:bg-gray-700' : 'text-gray-800 hover:bg-gray-100')
+              } ${isRTL && lang.code === 'ar' ? 'text-right' : ''}`}
+            >
+              {lang.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }; 

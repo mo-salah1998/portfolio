@@ -20,7 +20,15 @@ const enTranslations = {
   experienceTitle: 'EXPERIENCE',
   // Footer
   footerText: 'Seasoned Full Stack Software Engineer with over 8 years of hands-on experience in designing and implementing robust, scalable, and innovative web solutions. Adept at leveraging a comprehensive skill set encompassing front-end and back-end technologies',
-  email: 'email',
+  email: 'Email',
+  phone: 'Phone',
+  location: 'Location',
+  followMe: 'Follow Me',
+  allRightsReserved: 'All Rights Reserved',
+  // Main title
+  codeAndTeach: 'I do code and teach',
+  studentsHow: 'students how to',
+  doItToo: 'do it too!',
 };
 
 // French translations
@@ -40,29 +48,45 @@ const frTranslations = {
   projectsTitle: 'PROJETS',
   experienceTitle: 'EXPÉRIENCE',
   // Footer
-  footerText: 'Ingénieur logiciel full stack expérimenté avec plus de 2 ans d\'expérience pratique dans la conception et la mise en œuvre de solutions web robustes, évolutives et innovantes. Habile à exploiter un ensemble complet de compétences englobant les technologies front-end et back-end',
-  email: 'email',
+  footerText: 'Ingénieur logiciel full stack expérimenté avec plus de 8 ans d\'expérience pratique dans la conception et la mise en œuvre de solutions web robustes, évolutives et innovantes. Habile à exploiter un ensemble complet de compétences englobant les technologies front-end et back-end',
+  email: 'Email',
+  phone: 'Téléphone',
+  location: 'Emplacement',
+  followMe: 'Suivez-moi',
+  allRightsReserved: 'Tous Droits Réservés',
+  // Main title
+  codeAndTeach: 'Je code et j\'enseigne',
+  studentsHow: 'aux étudiants comment',
+  doItToo: 'le faire aussi !',
 };
 
-// Arabic translations
+// Arabic translations - fixed and corrected
 const arTranslations = {
   // Navigation
   home: 'الرئيسية',
   projects: 'المشاريع',
   experience: 'الخبرات',
-  contact: 'اتصل بنا',
+  contact: 'تواصل معي',
   // Bio
-  bioText: 'أنا مهندس برمجيات متمرس مع أكثر من 8 سنوات من الخبرة المهنية، متخصص في تطوير الواجهات الخلفية. تكمن خبرتي في إنشاء بنيات قوية وقابلة للتوسع تعتمد على SaaS على منصة Amazon AWS.',
+  bioText: 'أنا مهندس برمجيات متكامل ذو خبرة تزيد عن عامين من الخبرة المهنية، متخصص في تطوير الواجهات الأمامية والخلفية. تكمن خبرتي في إنشاء بنيات قوية وقابلة للتوسع تعتمد على SaaS على منصة Amazon AWS.',
   // Buttons
   getInTouch: 'تواصل معي',
   downloadCV: 'تحميل السيرة الذاتية',
   // Sections
-  experienceWith: 'الخبرة مع',
+  experienceWith: 'خبرة مع',
   projectsTitle: 'المشاريع',
   experienceTitle: 'الخبرات',
   // Footer
   footerText: 'مهندس برمجيات متكامل ذو خبرة تزيد عن 8 سنوات في تصميم وتنفيذ حلول ويب قوية وقابلة للتوسع ومبتكرة. بارع في الاستفادة من مجموعة شاملة من المهارات التي تشمل تقنيات الواجهة الأمامية والخلفية',
-  email: 'abmcodehub@gmail.com',
+  email: 'البريد الإلكتروني',
+  phone: 'الهاتف',
+  location: 'الموقع',
+  followMe: 'تابعني',
+  allRightsReserved: 'جميع الحقوق محفوظة',
+  // Main title
+  codeAndTeach: 'أقوم بالبرمجة وتعليم',
+  studentsHow: 'الطلاب كيفية',
+  doItToo: 'القيام بذلك أيضًا!',
 };
 
 i18n
@@ -81,7 +105,7 @@ i18n
       },
     },
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false, // not needed for React
     },

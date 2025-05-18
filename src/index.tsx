@@ -1,3 +1,5 @@
+// @ts-ignore
+import "./styles/tailwind.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { I18nextProvider } from "react-i18next";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "../components/ui/button";
 import { useTheme } from "../lib/theme-context";
@@ -8,8 +8,9 @@ import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 
 export const Portfolio = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const isRTL = i18n.language === 'ar';
 
   // Technology icons data
   const techIcons = [
@@ -25,36 +26,70 @@ export const Portfolio = (): JSX.Element => {
     { name: "Reactjs", src: "/reactjs.png", width: "47px", height: "42px" },
   ];
 
-  return (
-    <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} flex flex-row justify-center w-full`}>
-      <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} overflow-hidden relative`}>
-        <Header />
+  // Update dir attribute when language changes
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language || 'en';
+  }, [isRTL, i18n.language]);
 
+  return (
+    <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} w-full overflow-x-hidden`} dir={isRTL ? 'rtl' : 'ltr'}>
+      <Header />
+
+      <div className="max-w-7xl mx-auto px-4">
         {/* Profile Section */}
-        <div id="home" className="flex flex-col items-center mt-28 pt-20 px-4 md:px-6">
+        <div id="home" className="flex flex-col items-center mt-28 pt-20 md:px-6 w-full">
           <div className="w-64 h-56 relative">
-            <div className="relative w-52 h-52 top-2 left-2 rounded-full bg-[url(/avatar.png)] bg-cover bg-center" />
+            {/* Circular background for avatar that matches the gradient text color */}
+            <div className="absolute w-52 h-52 rounded-full" style={{
+              background: 'linear-gradient(90deg, rgba(166,108,255,0.8) 0%, rgba(255,134,96,0.8) 100%)',
+              top: '0',
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }}></div>
+            {isRTL ? (
+              <div className="relative w-52 h-52 rounded-full bg-[url(/avatar.png)] bg-cover bg-center"
+              style={{
+                top: '0px',
+                left: '31%',
+                transform: 'translateX(-50%)'
+              }} />
+          ):(
+            <div className="relative w-52 h-52 rounded-full bg-[url(/avatar.png)] bg-cover bg-center"
+            style={{
+              top: '0px',
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }} />
+          )}
           </div>
 
           {/* Main Title */}
-          <div className="text-center mt-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              I do code and teach
-              <br className="hidden md:block" />
-              <span className="md:ml-2">students how to </span>
-              <span className="gradient-text text-[#a66cff]">do it too!</span>
-            </h1>
+          <div className="text-center mt-10 w-full">
+            {isRTL ? (
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold flex flex-col items-center gap-2">
+                <span>{t('codeAndTeach')}</span>
+                <span>{t('studentsHow')}</span>
+                <span className="gradient-text text-[#a66cff]">{t('doItToo')}</span>
+              </h1>
+            ) : (
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+                {t('codeAndTeach')} <br />
+                <span className="hidden md:inline md:ml-2">{t('studentsHow')} </span>
+                <span className="gradient-text text-[#a66cff]">{t('doItToo')}</span>
+              </h1>
+            )}
           </div>
 
           {/* Bio Text */}
-          <div className="w-full max-w-2xl mt-16 text-center">
-            <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed`}>
+          <div className="w-full max-w-2xl mt-16">
+            <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed ${isRTL ? 'text-right' : 'text-center'}`}>
               {t('bioText')}
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row gap-5 mt-10">
+          <div className={`flex flex-col md:flex-row gap-5 mt-10 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
             <Button
               variant="outline"
               className={`w-full md:w-48 h-16 rounded-full border border-solid ${theme === 'dark' ? 'border-white' : 'border-gray-800'} bg-transparent`}
@@ -103,7 +138,7 @@ export const Portfolio = (): JSX.Element => {
         </div>
 
         {/* Projects Section */}
-        <div className="projects-container px-4 md:px-6">
+        <div className="w-full px-4 md:px-6">
           <ProjectSection />
         </div>
 
@@ -115,12 +150,14 @@ export const Portfolio = (): JSX.Element => {
         </div>
 
         {/* Experience Section */}
-        <ExperienceSection />
-
-        {/* Footer */}
-        <div id="contact" className="w-screen mt-12">
-          <Footer />
+        <div className="w-full">
+          <ExperienceSection />
         </div>
+      </div>
+
+      {/* Footer */}
+      <div id="contact" className="w-full mt-12">
+        <Footer />
       </div>
     </div>
   );

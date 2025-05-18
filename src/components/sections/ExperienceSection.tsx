@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../lib/theme-context";
 
 export const ExperienceSection = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const isRTL = i18n.language === 'ar';
   
   // Sample experience data
   const experiences = [
@@ -41,9 +42,9 @@ export const ExperienceSection = (): JSX.Element => {
               theme === 'dark' 
                 ? 'bg-[#252525] border border-gray-700' 
                 : 'bg-white border border-gray-200 shadow-sm'
-            }`}
+            } text-${isRTL ? 'right' : 'left'}`}
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+            <div className={`flex flex-col md:flex-row md:items-center justify-between mb-4 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
               <div>
                 <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                   {exp.role}
@@ -61,7 +62,7 @@ export const ExperienceSection = (): JSX.Element => {
               {exp.description}
             </p>
             
-            <div className="flex flex-wrap gap-2">
+            <div className={`flex flex-wrap gap-2 ${isRTL ? 'justify-end' : 'justify-start'}`}>
               {exp.technologies.map((tech, idx) => (
                 <span 
                   key={idx} 

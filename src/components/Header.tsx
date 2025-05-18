@@ -6,9 +6,10 @@ import { useTheme } from "../lib/theme-context";
 import { Menu, X } from "lucide-react";
 
 export const Header = (): JSX.Element => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isRTL = i18n.language === 'ar';
   
   // Navigation items data
   const navItems = [
@@ -29,13 +30,13 @@ export const Header = (): JSX.Element => {
   };
 
   return (
-    <header className="w-full h-20 fixed top-0 left-0 z-50 mx-auto">
+    <header className="w-full h-20 fixed top-0 left-0 right-0 z-50" dir={isRTL ? 'rtl' : 'ltr'}>
       <div className="relative w-full h-full">
-        <div className={`absolute w-full h-full top-0 left-0 ${theme === 'dark' ? 'bg-[#222222]' : 'bg-white'} shadow-md ${theme === 'dark' ? 'opacity-100' : 'opacity-95'}`} />
+        <div className={`absolute w-full h-full top-0 left-0 right-0 ${theme === 'dark' ? 'bg-[#222222]' : 'bg-white'} shadow-md ${theme === 'dark' ? 'opacity-100' : 'opacity-95'}`} />
 
         <div className="flex items-center justify-between h-full px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
           {/* Logo */}
-          <div className="relative z-10">
+          <div className={`relative z-10 ${isRTL ? 'order-2' : 'order-1'}`}>
             <svg 
               className={`w-32 h-32 md:w-40 md:h-40 ${theme === 'dark' ? 'text-white' : 'text-black'}`} 
               width="600" 
@@ -56,9 +57,9 @@ export const Header = (): JSX.Element => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className={`hidden md:flex items-center gap-6 ${isRTL ? 'order-1 ml-auto' : 'order-2'}`}>
             <nav className="relative z-10">
-              <ul className="flex items-center gap-6 lg:gap-10">
+              <ul className={`flex items-center gap-6 lg:gap-10 ${isRTL ? 'rtl-nav' : ''}`}>
                 {navItems.map((item, index) => (
                   <li key={index}>
                     <button 
@@ -72,14 +73,14 @@ export const Header = (): JSX.Element => {
               </ul>
             </nav>
             
-            <div className="flex items-center gap-4 relative z-10">
+            <div className={`flex items-center gap-4 relative z-10`}>
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4 relative z-10">
+          <div className={`md:hidden flex items-center gap-4 relative z-10 ${isRTL ? 'order-1' : 'order-2'}`}>
             <ThemeToggle />
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -97,14 +98,14 @@ export const Header = (): JSX.Element => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className={`md:hidden absolute top-20 left-0 w-full ${theme === 'dark' ? 'bg-[#222222]' : 'bg-white'} shadow-md z-50`}>
+          <div className={`md:hidden absolute top-20 inset-x-0 w-full ${theme === 'dark' ? 'bg-[#222222]' : 'bg-white'} shadow-md z-50`}>
             <nav className="p-4">
               <ul className="flex flex-col space-y-4">
                 {navItems.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} className="w-full">
                     <button 
                       onClick={() => scrollToSection(item.id)}
-                      className={`cursor-pointer font-sans font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'} text-base tracking-wide hover:text-opacity-70 transition-colors`}
+                      className={`cursor-pointer font-sans font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'} text-base tracking-wide hover:text-opacity-70 transition-colors w-full text-${isRTL ? 'right' : 'left'}`}
                     >
                       {item.label}
                     </button>
