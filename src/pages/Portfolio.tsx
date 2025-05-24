@@ -6,32 +6,42 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
+import { TechIconSafe } from "../components/TechIconSafe";
+
+// Importez le type TechName depuis le composant TechIconSafe
+type TechName = 
+  | 'Javascript'
+  | 'Nodejs'
+  | 'Html'
+  | 'Css'
+  | 'Reactjs'
+  | 'Typescript'
+  | 'Nextjs'
+  | 'Tailwind'
+  | 'Git'
+  | 'Github'
+  | 'Docker'
+  | 'AWS';
 
 export const Portfolio = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const isRTL = i18n.language === 'ar';
 
-  // Technology icons data
-  const techIcons = [
-    {
-      name: "Javascript",
-      src: "/javascript.png",
-      width: "42px",
-      height: "42px",
-    },
-    { name: "Nodejs", src: "/nodejs.png", width: "42px", height: "42px" },
-    { name: "Html", src: "/html.png", width: "37px", height: "42px" },
-    { name: "Css", src: "/css.png", width: "37px", height: "42px" },
-    { name: "Reactjs", src: "/reactjs.png", width: "47px", height: "42px" },
-    { name: "Typescript", src: "/TypeScript.png", width: "47px", height: "42px" },
-    { name: "Nextjs", src: "/nextjs.png", width: "47px", height: "42px" },
-    { name: "Tailwind", src: "/tailwind.png", width: "47px", height: "42px" },
-    { name: "Git", src: "/git.png", width: "47px", height: "42px" },
-    { name: "Github", src: "/github.png", width: "47px", height: "42px" },
-    { name: "Docker", src: "/docker.png", width: "47px", height: "42px" },
-    { name: "AWS", src: "/aws.png", width: "47px", height: "42px" },
-    
+  // Technology icons data avec le bon type
+  const techIcons: { name: TechName }[] = [
+    { name: "Javascript" },
+    { name: "Nodejs" },
+    { name: "Html" },
+    { name: "Css" },
+    { name: "Reactjs" },
+    { name: "Typescript" },
+    { name: "Nextjs" },
+    { name: "Tailwind" },
+    { name: "Git" },
+    { name: "Github" },
+    { name: "Docker" },
+    { name: "AWS" },
   ];
 
   // Update dir attribute when language changes
@@ -125,14 +135,26 @@ export const Portfolio = (): JSX.Element => {
 
             {/* Tech Icons */}
             <div className="flex flex-wrap justify-center items-start gap-8 md:gap-12 lg:gap-16 mt-8">
-              {techIcons.map((icon, index) => (
-                <img
-                  key={index}
-                  className="relative"
-                  style={{ width: icon.width, height: icon.height }}
-                  alt={icon.name}
-                  src={icon.src}
-                />
+              {techIcons.map((tech, index) => (
+                <div 
+                  key={index} 
+                  className={`flex flex-col items-center justify-center p-4 rounded-lg ${
+                    theme === 'dark' 
+                      ? 'bg-[#161513] hover:opacity-80' 
+                      : 'bg-white shadow-sm border border-gray-200 hover:shadow-md'
+                  } transition-all min-w-[80px]`}
+                >
+                  <div className="relative mb-2 flex items-center justify-center" style={{ height: "42px" }}>
+                    <TechIconSafe 
+                      name={tech.name} 
+                      isDarkMode={theme === 'dark'} 
+                      size={42} 
+                    />
+                  </div>
+                  <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                    {tech.name}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
