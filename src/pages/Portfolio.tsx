@@ -24,6 +24,14 @@ export const Portfolio = (): JSX.Element => {
     { name: "Html", src: "/html.png", width: "37px", height: "42px" },
     { name: "Css", src: "/css.png", width: "37px", height: "42px" },
     { name: "Reactjs", src: "/reactjs.png", width: "47px", height: "42px" },
+    { name: "Typescript", src: "/TypeScript.png", width: "47px", height: "42px" },
+    { name: "Nextjs", src: "/nextjs.png", width: "47px", height: "42px" },
+    { name: "Tailwind", src: "/tailwind.png", width: "47px", height: "42px" },
+    { name: "Git", src: "/git.png", width: "47px", height: "42px" },
+    { name: "Github", src: "/github.png", width: "47px", height: "42px" },
+    { name: "Docker", src: "/docker.png", width: "47px", height: "42px" },
+    { name: "AWS", src: "/aws.png", width: "47px", height: "42px" },
+    
   ];
 
   // Update dir attribute when language changes
