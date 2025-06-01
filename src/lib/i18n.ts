@@ -122,7 +122,7 @@ const frTranslations = {
   },
 };
 
-// Arabic translations - fixed and corrected
+// Arabic translations 
 const arTranslations = {
   // Navigation
   home: 'الرئيسية',
