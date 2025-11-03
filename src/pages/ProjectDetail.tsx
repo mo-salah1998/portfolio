@@ -40,6 +40,7 @@ export const ProjectDetail = (): JSX.Element => {
         imageUrl2: '/orange-summer-challenge-mea.jpg', // MEA version
         technologies: t('project2.technologies').split(', '),
         liveUrl: t('project2.liveUrl'),
+        liveUrl2: t('project2.liveUrl2'),
       };
     }
     return null;
@@ -122,15 +123,25 @@ export const ProjectDetail = (): JSX.Element => {
             </div>
 
             {/* Project Links */}
-            <div className={`flex gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <div className={`flex flex-col gap-3 ${isRTL ? 'items-end' : 'items-start'}`}>
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium"
+                  className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-center min-w-[200px]"
                 >
-                  Live Demo
+                  {project.id === '2' ? t('orangeTunisieVersion') : 'Live Demo'}
+                </a>
+              )}
+              {(project as any).liveUrl2 && (
+                <a
+                  href={(project as any).liveUrl2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-colors font-medium text-center min-w-[200px]"
+                >
+                  {t('orangeMEAVersion')}
                 </a>
               )}
             </div>

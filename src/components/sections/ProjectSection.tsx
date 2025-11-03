@@ -10,38 +10,51 @@ export const ProjectSection = (): JSX.Element => {
   const navigate = useNavigate();
   const isRTL = i18n.language === 'ar';
   
-  // Project data from translations
+  // Project data from translations (reversed order)
   const projects = [
-    {
-      id: '1',
-      title: t('project1.title'),
-      shortDescription: t('project1.shortDescription'),
-      imageUrl: "/interior-design-project.jpg",
-      technologies: t('project1.technologies').split(', ').slice(0, 3), // Show only first 3
-      githubUrl: "",
-      liveUrl: "https://interior-designe-project.vercel.app",
-    },
     {
       id: '2',
       title: t('project2.title'),
       shortDescription: t('project2.shortDescription'),
-      imageUrl: "/orange-summer-challenge.jpg",
+      imageUrl: "/orange-summer-challenge-cover.jpg",
       technologies: t('project2.technologies').split(', ').slice(0, 3), // Show only first 3
       githubUrl: "",
       liveUrl: t('project2.liveUrl'),
     },
+    {
+      id: '1',
+      title: t('project1.title'),
+      shortDescription: t('project1.shortDescription'),
+      imageUrl: "/interior-design-cover.png",
+      technologies: t('project1.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: "https://interior-designe-project.vercel.app",
+    },
   ];
+
+  const handleCardClick = (projectId: string, e: React.MouseEvent) => {
+    // Only navigate if click is not on a button or link
+    const target = e.target as HTMLElement;
+    if (!target.closest('button') && !target.closest('a')) {
+      navigate(`/project/${projectId}`);
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 w-full max-w-7xl mx-auto">
       {projects.map((project, index) => (
         <Card 
           key={index} 
-          className={`overflow-hidden ${theme === 'dark' ? 'bg-[#252525] border-gray-700' : 'bg-white border-gray-200'}`}
+          onClick={(e) => handleCardClick(project.id, e)}
+          className={`overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${
+            theme === 'dark' 
+              ? 'bg-[#252525] border-gray-700 hover:border-gray-600' 
+              : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg'
+          }`}
         >
           <div className={`text-${isRTL ? 'right' : 'left'}`}>
             <div 
-              className="w-full h-48 bg-cover bg-center" 
+              className="w-full h-48 bg-cover bg-center transition-transform duration-300 hover:scale-110" 
               style={{ backgroundImage: `url(${project.imageUrl})` }}
             />
             <div className="p-6">
@@ -81,7 +94,10 @@ export const ProjectSection = (): JSX.Element => {
               
               <div className={`flex gap-3 mt-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
                 <button
-                  onClick={() => navigate(`/project/${project.id}`)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/project/${project.id}`);
+                  }}
                   className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                     theme === 'dark'
                       ? 'bg-blue-600 text-white hover:bg-blue-700'
@@ -95,6 +111,7 @@ export const ProjectSection = (): JSX.Element => {
                     href={project.liveUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
                       theme === 'dark'
                         ? 'bg-gray-700 text-white hover:bg-gray-600'

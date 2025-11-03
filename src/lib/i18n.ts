@@ -73,13 +73,15 @@ const enTranslations = {
     shortDescription: 'Official Orange Summer Challenge 2025 website with two tailored versions for Orange Tunisie and Orange MEA, featuring event presentation, user registration, and admin dashboard.',
     description: 'I developed and delivered the official Orange Summer Challenge 2025 website with two tailored versions: osc25.orange.tn for Orange Tunisie and osc25.gos.orange.com for Orange MEA. The platform includes event presentation with localized branding, user registration and login, program schedule, responsive design, and an admin dashboard.\n\nKey Contributions:\n• Developed two localized versions for different markets (Tunisia and MEA)\n• Implemented event presentation with localized branding\n• Built user registration and authentication system\n• Created responsive design for all devices\n• Developed admin dashboard for content management\n• Completed project on time with focus on performance and scalability\n• Deployed using Docker and Swarm for containerization',
     technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
-    liveUrl: 'https://osc25.orange.tn',
+    liveUrl: 'https://odc-platform-green.vercel.app',
+    liveUrl2: 'https://osc25.gos.orange.com',
   },
   // Common project labels
   viewDetails: 'View Details',
   backToProjects: 'Back to Projects',
   keyContributions: 'Key Contributions',
   orangeMEAVersion: 'Orange MEA Version',
+  orangeTunisieVersion: 'Orange Tunisie Version',
 };
 
 // French translations
@@ -153,13 +155,15 @@ const frTranslations = {
     shortDescription: 'Site web officiel Orange Summer Challenge 2025 avec deux versions adaptées pour Orange Tunisie et Orange MEA, incluant présentation d\'événement, inscription utilisateur et tableau de bord administrateur.',
     description: 'J\'ai développé et livré le site web officiel Orange Summer Challenge 2025 avec deux versions adaptées : osc25.orange.tn pour Orange Tunisie et osc25.gos.orange.com pour Orange MEA. La plateforme inclut la présentation de l\'événement avec un branding localisé, l\'inscription et la connexion utilisateur, le programme, un design responsive et un tableau de bord administrateur.\n\nContributions Clés:\n• Développement de deux versions localisées pour différents marchés (Tunisie et MEA)\n• Implémentation de la présentation d\'événement avec branding localisé\n• Construction du système d\'inscription et d\'authentification utilisateur\n• Création d\'un design responsive pour tous les appareils\n• Développement du tableau de bord administrateur pour la gestion de contenu\n• Projet terminé à temps avec un focus sur la performance et la scalabilité\n• Déploiement utilisant Docker et Swarm pour la conteneurisation',
     technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
-    liveUrl: 'https://osc25.orange.tn',
+    liveUrl: 'https://odc-platform-green.vercel.app',
+    liveUrl2: 'https://osc25.gos.orange.com',
   },
   // Common project labels
   viewDetails: 'Voir les détails',
   backToProjects: 'Retour aux projets',
   keyContributions: 'Contributions Clés',
   orangeMEAVersion: 'Version Orange MEA',
+  orangeTunisieVersion: 'Version Orange Tunisie',
 };
 
 // Arabic translations 
@@ -233,13 +237,15 @@ const arTranslations = {
     shortDescription: 'الموقع الرسمي لـ Orange Summer Challenge 2025 مع نسختين مخصصتين لـ Orange Tunisie و Orange MEA، يتضمن عرض الحدث وتسجيل المستخدمين ولوحة تحكم إدارية.',
     description: 'قمت بتطوير وتسليم الموقع الرسمي لـ Orange Summer Challenge 2025 مع نسختين مخصصتين: osc25.orange.tn لـ Orange Tunisie و osc25.gos.orange.com لـ Orange MEA. تتضمن المنصة عرض الحدث مع هوية محلية، تسجيل المستخدمين وتسجيل الدخول، برنامج الحدث، تصميم متجاوب ولوحة تحكم إدارية.\n\nالمساهمات الرئيسية:\n• تطوير نسختين محليتين لأسواق مختلفة (تونس و MEA)\n• تنفيذ عرض الحدث مع هوية محلية\n• بناء نظام تسجيل المستخدمين والمصادقة\n• إنشاء تصميم متجاوب لجميع الأجهزة\n• تطوير لوحة تحكم إدارية لإدارة المحتوى\n• إكمال المشروع في الوقت المحدد مع التركيز على الأداء والقابلية للتوسع\n• النشر باستخدام Docker و Swarm للحاويات',
     technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
-    liveUrl: 'https://osc25.orange.tn',
+    liveUrl: 'https://odc-platform-green.vercel.app',
+    liveUrl2: 'https://osc25.gos.orange.com',
   },
   // Common project labels
   viewDetails: 'عرض التفاصيل',
   backToProjects: 'العودة إلى المشاريع',
   keyContributions: 'المساهمات الرئيسية',
   orangeMEAVersion: 'نسخة Orange MEA',
+  orangeTunisieVersion: 'نسخة Orange Tunisie',
 };
 
 i18n
