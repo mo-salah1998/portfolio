@@ -60,6 +60,26 @@ const enTranslations = {
     period: 'Mar 2022 - Sep 2022',
     description: 'Designed and developed a platform for delivery companies, partnered with Addresti using the MERN stack.',
   },
+  // Project entries
+  project1: {
+    title: 'Interior Design Website Integration (UI Integration)',
+    shortDescription: 'UI integration of a modern, responsive interior design website using Tailwind CSS and Framer Motion for smooth animations.',
+    description: 'For this project, my main responsibility was the UI integration of a modern, responsive interior design website. I translated the provided design into clean and maintainable code using Tailwind CSS for styling and Framer Motion for smooth, engaging animations.\n\nKey Contributions:\n• Implemented pixel-perfect UI based on Figma\n• Built responsive layouts using Tailwind CSS\n• Integrated Framer Motion for animation and transition effects\n• Ensured cross-browser compatibility and mobile responsiveness\n• Optimized the structure for future functionality integration',
+    technologies: 'Tailwind CSS, Framer Motion, React, TypeScript, Next.js',
+    liveUrl: 'https://interior-designe-project.vercel.app',
+  },
+  project2: {
+    title: 'Orange Summer Challenge Website (Event Website)',
+    shortDescription: 'Official Orange Summer Challenge 2025 website with two tailored versions for Orange Tunisie and Orange MEA, featuring event presentation, user registration, and admin dashboard.',
+    description: 'I developed and delivered the official Orange Summer Challenge 2025 website with two tailored versions: osc25.orange.tn for Orange Tunisie and osc25.gos.orange.com for Orange MEA. The platform includes event presentation with localized branding, user registration and login, program schedule, responsive design, and an admin dashboard.\n\nKey Contributions:\n• Developed two localized versions for different markets (Tunisia and MEA)\n• Implemented event presentation with localized branding\n• Built user registration and authentication system\n• Created responsive design for all devices\n• Developed admin dashboard for content management\n• Completed project on time with focus on performance and scalability\n• Deployed using Docker and Swarm for containerization',
+    technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
+    liveUrl: 'https://osc25.orange.tn',
+  },
+  // Common project labels
+  viewDetails: 'View Details',
+  backToProjects: 'Back to Projects',
+  keyContributions: 'Key Contributions',
+  orangeMEAVersion: 'Orange MEA Version',
 };
 
 // French translations
@@ -120,6 +140,26 @@ const frTranslations = {
     period: 'Mars 2022 - Sept 2022',
     description: 'Conception et développement d\'une plateforme pour les entreprises de livraison, en partenariat avec Addresti, utilisant la stack MERN.',
   },
+  // Project entries
+  project1: {
+    title: 'Intégration de Site Web de Design d\'Intérieur (Intégration UI)',
+    shortDescription: 'Intégration de l\'interface utilisateur d\'un site web moderne et responsive de design d\'intérieur utilisant Tailwind CSS et Framer Motion pour des animations fluides.',
+    description: 'Pour ce projet, ma principale responsabilité était l\'intégration de l\'interface utilisateur d\'un site web moderne et responsive de design d\'intérieur. J\'ai traduit le design fourni en code propre et maintenable en utilisant Tailwind CSS pour le style et Framer Motion pour des animations fluides et engageantes.\n\nContributions Clés:\n• Implémentation d\'une interface utilisateur pixel-perfect basée sur Figma\n• Création de mises en page responsives avec Tailwind CSS\n• Intégration de Framer Motion pour les effets d\'animation et de transition\n• Assurance de la compatibilité multi-navigateurs et de la réactivité mobile\n• Optimisation de la structure pour une intégration future de fonctionnalités',
+    technologies: 'Tailwind CSS, Framer Motion, React, TypeScript, Next.js',
+    liveUrl: 'https://interior-designe-project.vercel.app',
+  },
+  project2: {
+    title: 'Site Web Orange Summer Challenge (Site d\'Événement)',
+    shortDescription: 'Site web officiel Orange Summer Challenge 2025 avec deux versions adaptées pour Orange Tunisie et Orange MEA, incluant présentation d\'événement, inscription utilisateur et tableau de bord administrateur.',
+    description: 'J\'ai développé et livré le site web officiel Orange Summer Challenge 2025 avec deux versions adaptées : osc25.orange.tn pour Orange Tunisie et osc25.gos.orange.com pour Orange MEA. La plateforme inclut la présentation de l\'événement avec un branding localisé, l\'inscription et la connexion utilisateur, le programme, un design responsive et un tableau de bord administrateur.\n\nContributions Clés:\n• Développement de deux versions localisées pour différents marchés (Tunisie et MEA)\n• Implémentation de la présentation d\'événement avec branding localisé\n• Construction du système d\'inscription et d\'authentification utilisateur\n• Création d\'un design responsive pour tous les appareils\n• Développement du tableau de bord administrateur pour la gestion de contenu\n• Projet terminé à temps avec un focus sur la performance et la scalabilité\n• Déploiement utilisant Docker et Swarm pour la conteneurisation',
+    technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
+    liveUrl: 'https://osc25.orange.tn',
+  },
+  // Common project labels
+  viewDetails: 'Voir les détails',
+  backToProjects: 'Retour aux projets',
+  keyContributions: 'Contributions Clés',
+  orangeMEAVersion: 'Version Orange MEA',
 };
 
 // Arabic translations 
@@ -180,6 +220,26 @@ const arTranslations = {
     period: 'مارس 2022 - سبتمبر 2022',
     description: 'تصميم وتطوير منصة لشركات التوصيل، بالشراكة مع Addresti باستخدام مجموعة تقنيات MERN.',
   },
+  // Project entries
+  project1: {
+    title: 'تكامل موقع تصميم داخلي (تكامل واجهة المستخدم)',
+    shortDescription: 'تكامل واجهة المستخدم لموقع تصميم داخلي حديث ومتجاوب باستخدام Tailwind CSS و Framer Motion للرسوم المتحركة السلسة.',
+    description: 'في هذا المشروع، كانت مسؤوليتي الرئيسية هي تكامل واجهة المستخدم لموقع تصميم داخلي حديث ومتجاوب. قمت بترجمة التصميم المقدم إلى كود نظيف وسهل الصيانة باستخدام Tailwind CSS للتنسيق و Framer Motion للرسوم المتحركة السلسة والجذابة.\n\nالمساهمات الرئيسية:\n• تنفيذ واجهة مستخدم مثالية بناءً على Figma\n• بناء تخطيطات متجاوبة باستخدام Tailwind CSS\n• دمج Framer Motion لتأثيرات الحركة والانتقال\n• ضمان التوافق مع المتصفحات المختلفة والاستجابة للجوال\n• تحسين البنية لتكامل الوظائف المستقبلية',
+    technologies: 'Tailwind CSS, Framer Motion, React, TypeScript, Next.js',
+    liveUrl: 'https://interior-designe-project.vercel.app',
+  },
+  project2: {
+    title: 'موقع Orange Summer Challenge (موقع حدث)',
+    shortDescription: 'الموقع الرسمي لـ Orange Summer Challenge 2025 مع نسختين مخصصتين لـ Orange Tunisie و Orange MEA، يتضمن عرض الحدث وتسجيل المستخدمين ولوحة تحكم إدارية.',
+    description: 'قمت بتطوير وتسليم الموقع الرسمي لـ Orange Summer Challenge 2025 مع نسختين مخصصتين: osc25.orange.tn لـ Orange Tunisie و osc25.gos.orange.com لـ Orange MEA. تتضمن المنصة عرض الحدث مع هوية محلية، تسجيل المستخدمين وتسجيل الدخول، برنامج الحدث، تصميم متجاوب ولوحة تحكم إدارية.\n\nالمساهمات الرئيسية:\n• تطوير نسختين محليتين لأسواق مختلفة (تونس و MEA)\n• تنفيذ عرض الحدث مع هوية محلية\n• بناء نظام تسجيل المستخدمين والمصادقة\n• إنشاء تصميم متجاوب لجميع الأجهزة\n• تطوير لوحة تحكم إدارية لإدارة المحتوى\n• إكمال المشروع في الوقت المحدد مع التركيز على الأداء والقابلية للتوسع\n• النشر باستخدام Docker و Swarm للحاويات',
+    technologies: 'React.js, Tailwind CSS, Node.js (NestJS), MongoDB, Docker, Swarm',
+    liveUrl: 'https://osc25.orange.tn',
+  },
+  // Common project labels
+  viewDetails: 'عرض التفاصيل',
+  backToProjects: 'العودة إلى المشاريع',
+  keyContributions: 'المساهمات الرئيسية',
+  orangeMEAVersion: 'نسخة Orange MEA',
 };
 
 i18n

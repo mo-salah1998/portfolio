@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
@@ -26,6 +27,7 @@ type TechName =
 export const Portfolio = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const location = useLocation();
   const isRTL = i18n.language === 'ar';
 
   // Technology icons data avec le bon type
@@ -49,6 +51,20 @@ export const Portfolio = (): JSX.Element => {
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language || 'en';
   }, [isRTL, i18n.language]);
+
+  // Handle scroll to section when navigating from detail page
+  useEffect(() => {
+    const scrollToId = (location.state as any)?.scrollTo;
+    if (scrollToId) {
+      // Small delay to ensure page is rendered
+      setTimeout(() => {
+        const element = document.getElementById(scrollToId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  }, [location.state]);
 
   return (
     <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} w-full overflow-x-hidden`} dir={isRTL ? 'rtl' : 'ltr'}>

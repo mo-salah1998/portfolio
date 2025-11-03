@@ -1,30 +1,34 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../lib/theme-context";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../ui/card";
 
 export const ProjectSection = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const navigate = useNavigate();
   const isRTL = i18n.language === 'ar';
   
-  // Sample project data
+  // Project data from translations
   const projects = [
     {
-      title: "Project 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo euismod, tincidunt nisi in, ultricies nisl.",
-      imageUrl: "/project1.jpg",
-      technologies: ["React", "TypeScript", "TailwindCSS"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
+      id: '1',
+      title: t('project1.title'),
+      shortDescription: t('project1.shortDescription'),
+      imageUrl: "/interior-design-project.jpg",
+      technologies: t('project1.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: "https://interior-designe-project.vercel.app",
     },
     {
-      title: "Project 2",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo euismod, tincidunt nisi in, ultricies nisl.",
-      imageUrl: "/project2.jpg",
-      technologies: ["Node.js", "Express", "MongoDB"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com",
+      id: '2',
+      title: t('project2.title'),
+      shortDescription: t('project2.shortDescription'),
+      imageUrl: "/orange-summer-challenge.jpg",
+      technologies: t('project2.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: t('project2.liveUrl'),
     },
   ];
 
@@ -44,8 +48,8 @@ export const ProjectSection = (): JSX.Element => {
               <h3 className={`text-xl font-bold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                 {project.title}
               </h3>
-              <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                {project.description}
+              <p className={`mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} line-clamp-2`}>
+                {project.shortDescription}
               </p>
               
               <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
@@ -61,29 +65,45 @@ export const ProjectSection = (): JSX.Element => {
                     {tech}
                   </span>
                 ))}
+                {((project.id === '1' && t('project1.technologies').split(', ').length > 3) ||
+                  (project.id === '2' && t('project2.technologies').split(', ').length > 3)) && (
+                  <span className={`px-2 py-1 text-xs rounded-full ${
+                    theme === 'dark' 
+                      ? 'bg-gray-700 text-gray-300' 
+                      : 'bg-gray-200 text-gray-700'
+                  }`}>
+                    +{(project.id === '1' 
+                      ? t('project1.technologies').split(', ').length - 3
+                      : t('project2.technologies').split(', ').length - 3)}
+                  </span>
+                )}
               </div>
               
               <div className={`flex gap-3 mt-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
-                <a 
-                  href={project.githubUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={`px-3 py-1 text-sm rounded ${
-                    theme === 'dark' 
-                      ? 'bg-gray-700 text-white hover:bg-gray-600' 
-                      : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                  } transition-colors`}
+                <button
+                  onClick={() => navigate(`/project/${project.id}`)}
+                  className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
+                    theme === 'dark'
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                  }`}
                 >
-                  GitHub
-                </a>
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 text-sm rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                >
-                  Live Demo
-                </a>
+                  {t('viewDetails')}
+                </button>
+                {project.liveUrl && (
+                  <a 
+                    href={project.liveUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
+                      theme === 'dark'
+                        ? 'bg-gray-700 text-white hover:bg-gray-600'
+                        : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                    }`}
+                  >
+                    Live Demo
+                  </a>
+                )}
               </div>
             </div>
           </div>

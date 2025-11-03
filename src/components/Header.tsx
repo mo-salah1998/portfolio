@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 import { LanguageSwitcher } from "./ui/language-switcher";
 import { ThemeToggle } from "./ui/theme-toggle";
 import { useTheme } from "../lib/theme-context";
@@ -8,8 +9,11 @@ import { Menu, X } from "lucide-react";
 export const Header = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isRTL = i18n.language === 'ar';
+  const isHomePage = location.pathname === '/';
   
   // Navigation items data
   const navItems = [
@@ -21,12 +25,19 @@ export const Header = (): JSX.Element => {
 
   // Scroll to section function
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
     // Close mobile menu after clicking
     setMobileMenuOpen(false);
+    
+    // If we're not on the home page, navigate to home first with scroll target
+    if (!isHomePage) {
+      navigate('/', { state: { scrollTo: id } });
+    } else {
+      // We're already on home page, scroll immediately
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
