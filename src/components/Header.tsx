@@ -17,7 +17,6 @@ export const Header = (): JSX.Element => {
   
   // Navigation items data
   const navItems = [
-    { label: t('home'), id: 'home' },
     { label: t('projects'), id: 'projects' },
     { label: t('experience'), id: 'experience' },
     { label: t('contact'), id: 'contact' },
@@ -47,7 +46,16 @@ export const Header = (): JSX.Element => {
 
         <div className="flex items-center justify-between h-full px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
           {/* Logo */}
-          <div className={`relative z-10 ${isRTL ? 'order-2' : 'order-1'}`}>
+          <div 
+            className={`relative z-10 cursor-pointer ${isRTL ? 'order-2' : 'order-1'}`}
+            onClick={() => {
+              if (isHomePage) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                navigate('/');
+              }
+            }}
+          >
             <svg 
               className={`w-32 h-32 md:w-40 md:h-40 ${theme === 'dark' ? 'text-white' : 'text-black'}`} 
               width="600" 
