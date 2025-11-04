@@ -13,6 +13,11 @@ export const ProjectDetail = (): JSX.Element => {
   const { theme } = useTheme();
   const isRTL = i18n.language === 'ar';
 
+  // Scroll to top when component mounts or id changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [id]);
+
   // Update dir attribute when language changes
   useEffect(() => {
     document.documentElement.dir = isRTL ? 'rtl' : 'ltr';

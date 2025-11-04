@@ -92,36 +92,19 @@ export const ProjectSection = (): JSX.Element => {
                 )}
               </div>
               
-              <div className={`flex gap-3 mt-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/project/${project.id}`);
-                  }}
-                  className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
-                    theme === 'dark'
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
-                  }`}
-                >
-                  {t('viewDetails')}
-                </button>
-                {project.liveUrl && (
+              {project.liveUrl && (
+                <div className={`mt-4 ${isRTL ? 'flex justify-end' : 'flex justify-start'}`}>
                   <a 
                     href={project.liveUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className={`px-4 py-2 text-sm rounded font-medium transition-colors ${
-                      theme === 'dark'
-                        ? 'bg-gray-700 text-white hover:bg-gray-600'
-                        : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                    }`}
+                    className="px-6 py-3 rounded-lg font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
                   >
                     Live Demo
                   </a>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </Card>
