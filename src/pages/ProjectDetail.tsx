@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Globe, Users, Calendar, MapPin, Zap, Shield, Code, Rocket } from "lucide-react";
 
 export const ProjectDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
@@ -31,7 +31,7 @@ export const ProjectDetail = (): JSX.Element => {
         id: '1',
         title: t('project1.title'),
         description: t('project1.description'),
-        imageUrl: '/interior-design-project.jpg',
+        imageUrl: '/interior-design-cover.png',
         technologies: t('project1.technologies').split(', '),
         liveUrl: t('project1.liveUrl'),
       };
@@ -41,11 +41,20 @@ export const ProjectDetail = (): JSX.Element => {
         id: '2',
         title: t('project2.title'),
         description: t('project2.description'),
-        imageUrl: '/orange-summer-challenge.jpg',
-        imageUrl2: '/orange-summer-challenge-mea.jpg', // MEA version
+        imageUrl: '/orange-summer-challenge-cover.jpg',
         technologies: t('project2.technologies').split(', '),
         liveUrl: t('project2.liveUrl'),
         liveUrl2: t('project2.liveUrl2'),
+      };
+    }
+    if (projectId === '3' || projectId === 'cyberoasis-v1') {
+      return {
+        id: '3',
+        title: t('project3.title'),
+        description: t('project3.description'),
+        imageUrl: '/cyberoasis-v1.png',
+        technologies: t('project3.technologies').split(', '),
+        liveUrl: t('project3.liveUrl'),
       };
     }
     return null;
@@ -90,26 +99,166 @@ export const ProjectDetail = (): JSX.Element => {
           <span>{t('backToProjects')}</span>
         </button>
 
-        {/* Two Column Layout: Text Left, Image Right */}
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 ${isRTL ? 'lg:grid-cols-[1fr,1fr]' : ''}`}>
-          {/* Left Side: Text Content */}
-          <div className={`${isRTL ? 'lg:order-2' : ''}`}>
-            {/* Project Title */}
-            <h1 className={`text-3xl md:text-4xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-              {project.title}
-            </h1>
+        {/* Hero Section with Image */}
+        <div className="mb-12">
+          <div className="rounded-lg overflow-hidden shadow-2xl">
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              className="w-full h-auto max-h-[400px] md:max-h-[450px] object-cover"
+            />
+          </div>
+        </div>
 
-            {/* Project Description */}
+        {/* Project Title */}
+        <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+          {project.title}
+        </h1>
+
+        {/* Project Overview Section - Only for Cyber Oasis */}
+        {project.id === '3' && (
+          <div className={`mb-10 p-6 rounded-lg ${
+            theme === 'dark' 
+              ? 'bg-[#252525] border border-gray-700' 
+              : 'bg-white border border-gray-200 shadow-sm'
+          }`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="flex items-center gap-3">
+                <Globe className={`w-6 h-6 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}`} />
+                <div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {t('project3.eventType')}
+                  </p>
+                  <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    {t('project3.eventTypeValue')}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Users className={`w-6 h-6 ${theme === 'dark' ? 'text-green-400' : 'text-green-600'}`} />
+                <div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {t('project3.region')}
+                  </p>
+                  <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    {t('project3.regionValue')}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Code className={`w-6 h-6 ${theme === 'dark' ? 'text-purple-400' : 'text-purple-600'}`} />
+                <div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {t('project3.role')}
+                  </p>
+                  <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    {t('project3.roleValue')}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Rocket className={`w-6 h-6 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-600'}`} />
+                <div>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {t('project3.status')}
+                  </p>
+                  <p className={`font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    {t('project3.statusValue')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Two Column Layout: Description and Features */}
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 ${isRTL ? 'lg:grid-cols-[1fr,1fr]' : ''}`}>
+          {/* Left Side: Description */}
+          <div className={`${isRTL ? 'lg:order-2' : ''}`}>
             <div className={`mb-8 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
               <p className="whitespace-pre-line text-lg">
-                {project.description}
+                {project.id === '3' 
+                  ? project.description.split('\n\nKey Contributions:')[0]
+                  : project.description.split('\n\nKey Contributions:')[0] || project.description
+                }
               </p>
             </div>
+
+            {/* Key Features Section - Only for Cyber Oasis */}
+            {project.id === '3' && (
+              <div className="mb-8">
+                <h2 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  {t('project3.keyFeatures')}
+                </h2>
+                <div className="space-y-4">
+                  {[
+                    { icon: Shield, text: t('project3.feature1') },
+                    { icon: Zap, text: t('project3.feature2') },
+                    { icon: Users, text: t('project3.feature3') },
+                    { icon: Globe, text: t('project3.feature4') },
+                    { icon: Code, text: t('project3.feature5') },
+                    { icon: Rocket, text: t('project3.feature6') },
+                  ].map((feature, idx) => (
+                    <div
+                      key={idx}
+                      className={`flex items-start gap-4 p-4 rounded-lg ${
+                        theme === 'dark'
+                          ? 'bg-[#252525] border border-gray-700'
+                          : 'bg-white border border-gray-200'
+                      }`}
+                    >
+                      <div className={`p-2 rounded-lg ${
+                        theme === 'dark'
+                          ? 'bg-gray-700'
+                          : 'bg-gray-100'
+                      }`}>
+                        <feature.icon className={`w-5 h-5 ${
+                          theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                        }`} />
+                      </div>
+                      <p className={`flex-1 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        {feature.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Side: Key Contributions & Technologies */}
+          <div className={`${isRTL ? 'lg:order-1' : ''}`}>
+            {/* Key Contributions - Only for Cyber Oasis */}
+            {project.id === '3' && (
+              <div className="mb-8">
+                <h2 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  {t('keyContributions')}
+                </h2>
+                <div className={`p-6 rounded-lg ${
+                  theme === 'dark'
+                    ? 'bg-[#252525] border border-gray-700'
+                    : 'bg-white border border-gray-200'
+                }`}>
+                  <ul className="space-y-3">
+                    {project.description.split('\n\nKey Contributions:')[1]?.split('\n•').slice(1).map((contribution, idx) => (
+                      contribution.trim() && (
+                        <li key={idx} className={`flex items-start gap-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                          <span className={`mt-2 w-2 h-2 rounded-full ${
+                            theme === 'dark' ? 'bg-blue-400' : 'bg-blue-600'
+                          }`} />
+                          <span>{contribution.trim()}</span>
+                        </li>
+                      )
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
 
             {/* Technologies */}
             <div className="mb-8">
               <h2 className={`text-xl font-semibold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-                Technologies Used
+                {t('project3.technologiesTitle')}
               </h2>
               <div className={`flex flex-wrap gap-3 ${isRTL ? 'justify-end' : 'justify-start'}`}>
                 {project.technologies.map((tech, idx) => (
@@ -127,6 +276,22 @@ export const ProjectDetail = (): JSX.Element => {
               </div>
             </div>
 
+            {/* Impact Section - Only for Cyber Oasis */}
+            {project.id === '3' && (
+              <div className={`mb-8 p-6 rounded-lg ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-700/30'
+                  : 'bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200'
+              }`}>
+                <h2 className={`text-2xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  ✨ {t('project3.impact')}
+                </h2>
+                <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  {t('project3.impactDescription')}
+                </p>
+              </div>
+            )}
+
             {/* Project Links */}
             <div className={`flex flex-col gap-3 ${isRTL ? 'items-end' : 'items-start'}`}>
               {project.liveUrl && (
@@ -134,9 +299,10 @@ export const ProjectDetail = (): JSX.Element => {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-center min-w-[200px]"
+                  className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-center min-w-[200px] flex items-center justify-center gap-2"
                 >
-                  {project.id === '2' ? t('orangeTunisieVersion') : 'Live Demo'}
+                  <Globe className="w-5 h-5" />
+                  {project.id === '2' ? t('orangeTunisieVersion') : 'Visit Website'}
                 </a>
               )}
               {(project as any).liveUrl2 && (
@@ -150,32 +316,6 @@ export const ProjectDetail = (): JSX.Element => {
                 </a>
               )}
             </div>
-          </div>
-
-          {/* Right Side: Images */}
-          <div className={`${isRTL ? 'lg:order-1' : ''}`}>
-            {/* Main Project Image */}
-            <div className="mb-4 rounded-lg overflow-hidden shadow-lg sticky top-24">
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            
-            {/* Second Image for Project 2 (MEA Version) */}
-            {(project as any).imageUrl2 && (
-              <div className="mb-4 rounded-lg overflow-hidden shadow-lg">
-                <p className={`text-sm mb-2 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {t('orangeMEAVersion')}
-                </p>
-                <img
-                  src={(project as any).imageUrl2}
-                  alt={`${project.title} - ${t('orangeMEAVersion')}`}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>
