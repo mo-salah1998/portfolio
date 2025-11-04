@@ -79,7 +79,7 @@ export const ProjectDetail = (): JSX.Element => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 mt-28 pt-8 pb-16">
         {/* Back Button */}
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/', { state: { scrollTo: 'projects' } })}
           className={`flex items-center gap-2 mb-8 px-4 py-2 rounded-lg transition-colors ${
             theme === 'dark' 
               ? 'bg-[#252525] text-white hover:bg-[#2a2a2a]' 
