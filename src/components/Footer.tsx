@@ -10,14 +10,15 @@ export const Footer = (): JSX.Element => {
   const socialLinks = [
     { name: "GitHub", url: "https://github.com/mo-salah1998", icon: "/github.svg" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/mouhamed-salah-naija/", icon: "/linkedin.svg" },
+    { name: "Medium", url: "https://medium.com/@naija963", icon: "/medium.svg" },
   ];
 
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className={`${theme === 'dark' ? 'bg-[#1d1d1d]' : 'bg-gray-200'} py-12 w-full`}>
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className={`flex flex-col md:flex-row justify-between gap-10`}>
+      <div className="px-4 mx-auto max-w-7xl md:px-6 lg:px-8">
+        <div className={`flex flex-col gap-10 justify-between md:flex-row`}>
           {/* Contact Info */}
           <div className="md:w-1/2">
             <h3 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
@@ -34,6 +35,12 @@ export const Footer = (): JSX.Element => {
                 <span className="font-semibold">{t('location')}:</span> Tunis, Tunisia
               </p>
             </div>
+              {/* Bio Text */}
+           {/*  <div className={`mt-12`}>
+             <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} text-lg leading-relaxed text-center `}>
+              {t('footerText')}
+            </p>
+        </div> */}
           </div>
 
           {/* Social Links */}
@@ -48,7 +55,7 @@ export const Footer = (): JSX.Element => {
                   href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:opacity-80 transition-opacity"
+                  className="transition-opacity hover:opacity-80"
                 >
                   <img 
                     src={link.icon} 
@@ -61,15 +68,10 @@ export const Footer = (): JSX.Element => {
           </div>
         </div>
 
-        {/* Bio Text */}
-        <div className={`mt-12`}>
-          <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} max-w-4xl mx-auto`}>
-            {t('footerText')}
-          </p>
-        </div>
+      
 
         {/* Copyright */}
-        <div className="mt-10 pt-6 border-t border-gray-600">
+        <div className="pt-6 mt-10 border-t border-gray-600">
           <p className={`text-center ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             &copy; {currentYear} {t('allRightsReserved')}
           </p>
