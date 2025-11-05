@@ -7,6 +7,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
+import { ImageGallerySection } from "../components/sections/ImageGallerySection";
 import { TechIconSafe } from "../components/TechIconSafe";
 
 // Importez le type TechName depuis le composant TechIconSafe
@@ -198,6 +199,18 @@ export const Portfolio = (): JSX.Element => {
         {/* Experience Section */}
         <div className="w-full">
           <ExperienceSection />
+        </div>
+
+        {/* Gallery Section Title */}
+        <div id="gallery" className="flex justify-center pt-10 mt-16 w-full text-center">
+          <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text md:text-4xl">
+            {t('galleryTitle')}
+          </h2>
+        </div>
+
+        {/* Gallery Section */}
+        <div className="w-full">
+          <ImageGallerySection />
         </div>
       </div>
 

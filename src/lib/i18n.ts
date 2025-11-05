@@ -114,6 +114,9 @@ const enTranslations = {
   keyContributions: 'Key Contributions',
   orangeMEAVersion: 'Orange MEA Version',
   orangeTunisieVersion: 'Orange Tunisie Version',
+  // Gallery
+  galleryTitle: 'GALLERY',
+  viewImage: 'View Image',
 };
 
 // French translations
@@ -228,6 +231,9 @@ const frTranslations = {
   keyContributions: 'Contributions Clés',
   orangeMEAVersion: 'Version Orange MEA',
   orangeTunisieVersion: 'Version Orange Tunisie',
+  // Gallery
+  galleryTitle: 'GALERIE',
+  viewImage: 'Voir l\'image',
 };
 
 // Arabic translations 
@@ -342,6 +348,9 @@ const arTranslations = {
   keyContributions: 'المساهمات الرئيسية',
   orangeMEAVersion: 'نسخة Orange MEA',
   orangeTunisieVersion: 'نسخة Orange Tunisie',
+  // Gallery
+  galleryTitle: 'معرض الصور',
+  viewImage: 'عرض الصورة',
 };
 
 i18n
