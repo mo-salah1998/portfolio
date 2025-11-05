@@ -13,13 +13,13 @@ export const ProjectSection = (): JSX.Element => {
   // Project data from translations (reversed order)
   const projects = [
     {
-      id: '3',
-      title: t('project3.title'),
-      shortDescription: t('project3.shortDescription'),
+      id: '4',
+      title: t('project4.title'),
+      shortDescription: t('project4.shortDescription'),
       imageUrl: "/cyberoasis-v1.png",
-      technologies: t('project3.technologies').split(', ').slice(0, 3), // Show only first 3
+      technologies: t('project4.technologies').split(', ').slice(0, 3), // Show only first 3
       githubUrl: "",
-      liveUrl: t('project3.liveUrl'),
+      liveUrl: t('project4.liveUrl'),
     },
     {
       id: '2',
@@ -29,6 +29,15 @@ export const ProjectSection = (): JSX.Element => {
       technologies: t('project2.technologies').split(', ').slice(0, 3), // Show only first 3
       githubUrl: "",
       liveUrl: t('project2.liveUrl'),
+    },
+    {
+      id: '3',
+      title: t('project3.title'),
+      shortDescription: t('project3.shortDescription'),
+      imageUrl: "/ufe-logo-tn.jpeg",
+      technologies: t('project3.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: t('project3.liveUrl'),
     },
     {
       id: '1',
@@ -89,7 +98,8 @@ export const ProjectSection = (): JSX.Element => {
                 ))}
                 {((project.id === '1' && t('project1.technologies').split(', ').length > 3) ||
                   (project.id === '2' && t('project2.technologies').split(', ').length > 3) ||
-                  (project.id === '3' && t('project3.technologies').split(', ').length > 3)) && (
+                  (project.id === '3' && t('project3.technologies').split(', ').length > 3) ||
+                  (project.id === '4' && t('project4.technologies').split(', ').length > 3)) && (
                   <span className={`px-2 py-1 text-xs rounded-full ${
                     theme === 'dark' 
                       ? 'bg-gray-700 text-gray-300' 
@@ -99,7 +109,9 @@ export const ProjectSection = (): JSX.Element => {
                       ? t('project1.technologies').split(', ').length - 3
                       : project.id === '2'
                       ? t('project2.technologies').split(', ').length - 3
-                      : t('project3.technologies').split(', ').length - 3)}
+                      : project.id === '3'
+                      ? t('project3.technologies').split(', ').length - 3
+                      : t('project4.technologies').split(', ').length - 3)}
                   </span>
                 )}
               </div>
