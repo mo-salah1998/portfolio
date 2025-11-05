@@ -70,10 +70,10 @@ export const Portfolio = (): JSX.Element => {
     <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} w-full overflow-x-hidden`} dir={isRTL ? 'rtl' : 'ltr'}>
       <Header />
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="px-4 mx-auto max-w-7xl">
         {/* Profile Section */}
-        <div id="home" className="flex flex-col items-center mt-28 pt-20 md:px-6 w-full">
-          <div className="w-64 h-56 relative">
+        <div id="home" className="flex flex-col items-center pt-20 mt-28 w-full md:px-6">
+          <div className="relative w-64 h-56">
             {/* Circular background for avatar that matches the gradient text color */}
             <div className="absolute w-52 h-52 rounded-full" style={{
               background: 'linear-gradient(90deg, rgba(166,108,255,0.8) 0%, rgba(255,134,96,0.8) 100%)',
@@ -82,14 +82,14 @@ export const Portfolio = (): JSX.Element => {
               transform: 'translateX(-50%)'
             }}></div>
             {isRTL ? (
-              <div className="relative w-52 h-52 rounded-full bg-[url(/avatar.png)] bg-cover bg-center"
+              <div className="relative w-52 h-52 rounded-full bg-[url(/avatar2.png)] bg-cover bg-center"
               style={{
                 top: '0px',
                 left: '31%',
                 transform: 'translateX(-50%)'
               }} />
           ):(
-            <div className="relative w-52 h-52 rounded-full bg-[url(/avatar.png)] bg-cover bg-center"
+            <div className="relative w-52 h-52 rounded-full bg-[url(/avatar2.png)] bg-cover bg-center"
             style={{
               top: '0px',
               left: '50%',
@@ -99,15 +99,15 @@ export const Portfolio = (): JSX.Element => {
           </div>
 
           {/* Main Title */}
-          <div className="text-center mt-10 w-full">
+          <div className="mt-10 w-full text-center">
             {isRTL ? (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold flex flex-col items-center gap-2">
+              <h1 className="flex flex-col gap-2 items-center text-4xl font-bold md:text-5xl lg:text-6xl">
                 <span>{t('codeAndTeach')}</span>
                 <span>{t('studentsHow')}</span>
                 <span className="gradient-text text-[#a66cff]">{t('doItToo')}</span>
               </h1>
             ) : (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
                 {t('codeAndTeach')} <br />
                 <span className="hidden md:inline md:ml-2">{t('studentsHow')} </span>
                 <span className="gradient-text text-[#a66cff]">{t('doItToo')}</span>
@@ -116,7 +116,7 @@ export const Portfolio = (): JSX.Element => {
           </div>
 
           {/* Bio Text */}
-          <div className="w-full max-w-2xl mt-16">
+          <div className="mt-16 w-full max-w-2xl">
             <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed ${isRTL ? 'text-right' : 'text-center'}`}>
               {t('bioText')}
             </p>
@@ -137,7 +137,7 @@ export const Portfolio = (): JSX.Element => {
               variant="outline"
               className={`w-full md:w-48 h-16 rounded-full border-2 border-solid ${theme === 'dark' ? 'border-white' : 'border-gray-800'} bg-transparent`}
             >
-              <span className="gradient-text font-sans font-semibold text-xl">
+              <span className="font-sans text-xl font-semibold gradient-text">
                 {t('downloadCV')}
               </span>
             </Button>
@@ -150,7 +150,7 @@ export const Portfolio = (): JSX.Element => {
             </h3>
 
             {/* Tech Icons */}
-            <div className="flex flex-wrap justify-center items-start gap-8 md:gap-12 lg:gap-16 mt-8">
+            <div className="flex flex-wrap gap-8 justify-center items-start mt-8 md:gap-12 lg:gap-16">
               {techIcons.map((tech, index) => (
                 <div 
                   key={index} 
@@ -160,7 +160,7 @@ export const Portfolio = (): JSX.Element => {
                       : 'bg-white shadow-sm border border-gray-200 hover:shadow-md'
                   } transition-all min-w-[80px]`}
                 >
-                  <div className="relative mb-2 flex items-center justify-center" style={{ height: "42px" }}>
+                  <div className="flex relative justify-center items-center mb-2" style={{ height: "42px" }}>
                     <TechIconSafe 
                       name={tech.name} 
                       isDarkMode={theme === 'dark'} 
@@ -176,21 +176,21 @@ export const Portfolio = (): JSX.Element => {
           </div>
 
           {/* Projects Section Title */}
-          <div id="projects" className="mt-16 pt-10 w-full text-center">
-            <h2 className="gradient-text-orange font-sans font-extrabold text-3xl md:text-4xl inline-block mb-10">
+          <div id="projects" className="pt-10 mt-16 w-full text-center">
+            <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-orange md:text-4xl">
               {t('projectsTitle')}
             </h2>
           </div>
         </div>
 
         {/* Projects Section */}
-        <div className="w-full px-4 md:px-6">
+        <div className="px-4 w-full md:px-6">
           <ProjectSection />
         </div>
 
         {/* Experience Section Title */}
-        <div id="experience" className="flex justify-center mt-16 pt-10 w-full text-center">
-          <h2 className="gradient-text-blue font-sans font-extrabold text-3xl md:text-4xl inline-block mb-10">
+        <div id="experience" className="flex justify-center pt-10 mt-16 w-full text-center">
+          <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-blue md:text-4xl">
             {t('experienceTitle')}
           </h2>
         </div>
@@ -202,7 +202,7 @@ export const Portfolio = (): JSX.Element => {
       </div>
 
       {/* Footer */}
-      <div id="contact" className="w-full mt-12">
+      <div id="contact" className="mt-12 w-full">
         <Footer />
       </div>
     </div>
