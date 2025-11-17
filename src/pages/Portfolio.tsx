@@ -170,7 +170,7 @@ export const Portfolio = (): JSX.Element => {
             
             {/* Subtext */}
             <p className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} animate-fade-in`}>
-              {isRTL ? '💬 دردش معي على واتساب - استجابة سريعة مضمونة!' : '💬 Chat with me on WhatsApp - Quick response guaranteed!'}
+              {t('whatsappSubtext')}
             </p>
           </div>
 

@@ -14,6 +14,7 @@ const enTranslations = {
   // Buttons
   getInTouch: 'Get In Touch',
   downloadCV: 'Download CV',
+  whatsappSubtext: '💬 Chat with me on WhatsApp - Quick response guaranteed!',
   // Sections
   experienceWith: 'EXPERIENCE WITH',
   projectsTitle: 'PROJECTS',
@@ -128,6 +129,7 @@ const frTranslations = {
   // Buttons
   getInTouch: 'Contactez-moi',
   downloadCV: 'Télécharger CV',
+  whatsappSubtext: '💬 Discutez avec moi sur WhatsApp - Réponse rapide garantie !',
   // Sections
   experienceWith: 'EXPÉRIENCE AVEC',
   projectsTitle: 'PROJETS',
@@ -242,6 +244,7 @@ const arTranslations = {
   // Buttons
   getInTouch: 'تواصل معي',
   downloadCV: 'تحميل السيرة الذاتية',
+  whatsappSubtext: '💬 دردش معي على واتساب - استجابة سريعة مضمونة!',
   // Sections
   experienceWith: 'خبرة مع',
   projectsTitle: 'المشاريع',
