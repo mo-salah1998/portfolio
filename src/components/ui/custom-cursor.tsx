@@ -27,7 +27,7 @@ export const CustomCursor: React.FC = () => {
 
   // Smooth cursor movement with interpolation
   const updateCursorPosition = useCallback(() => {
-    if (!cursorRef.current) return;
+    if (!cursorRef.current || document.hidden) return;
 
     // Lerp (linear interpolation) for smooth movement
     const lerp = (start: number, end: number, factor: number) => {
@@ -63,7 +63,10 @@ export const CustomCursor: React.FC = () => {
       lastTrailTime.current = now;
     }
 
-    animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+    // Continue animation only if page is visible
+    if (!document.hidden) {
+      animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+    }
   }, []);
 
   // Handle mouse movement
@@ -124,10 +127,66 @@ export const CustomCursor: React.FC = () => {
   const handleMouseEnter = useCallback(() => setIsVisible(true), []);
   const handleMouseLeave = useCallback(() => setIsVisible(false), []);
 
+  // Handle page visibility changes (tab switching)
+  const handleVisibilityChange = useCallback(() => {
+    if (document.hidden) {
+      // Page is hidden (tab switched away)
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    } else {
+      // Page is visible again (tab switched back)
+      setIsVisible(true);
+      setCursorState('default');
+      
+      // Restart animation loop
+      if (!animationFrameId.current) {
+        animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+      }
+      
+      // Reset cursor position to current mouse position
+      const resetCursorPosition = (e: MouseEvent) => {
+        mousePos.current.x = e.clientX;
+        mousePos.current.y = e.clientY;
+        cursorPos.current.x = e.clientX;
+        cursorPos.current.y = e.clientY;
+        
+        if (cursorRef.current) {
+          cursorRef.current.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+        }
+        
+        // Remove this temporary listener
+        document.removeEventListener('mousemove', resetCursorPosition);
+      };
+      
+      // Add temporary listener to reset position on first mouse move
+      document.addEventListener('mousemove', resetCursorPosition, { once: true, passive: true });
+    }
+  }, [updateCursorPosition]);
+
+  // Handle window focus/blur events as backup
+  const handleWindowFocus = useCallback(() => {
+    setIsVisible(true);
+    if (!animationFrameId.current) {
+      animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+    }
+  }, [updateCursorPosition]);
+
+  const handleWindowBlur = useCallback(() => {
+    if (animationFrameId.current) {
+      cancelAnimationFrame(animationFrameId.current);
+      animationFrameId.current = undefined;
+    }
+  }, []);
+
   useEffect(() => {
     // Initialize cursor position
     cursorPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     mousePos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+    // Ensure cursor is visible on mount
+    setIsVisible(true);
+    setCursorState('default');
 
     // Start animation loop
     animationFrameId.current = requestAnimationFrame(updateCursorPosition);
@@ -139,6 +198,11 @@ export const CustomCursor: React.FC = () => {
     document.addEventListener('mouseover', handleMouseOver, { passive: true });
     document.addEventListener('mousedown', handleMouseDown, { passive: true });
     document.addEventListener('mouseup', handleMouseUp, { passive: true });
+    
+    // Add visibility change listeners
+    document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
+    window.addEventListener('focus', handleWindowFocus, { passive: true });
+    window.addEventListener('blur', handleWindowBlur, { passive: true });
 
     return () => {
       // Cleanup
@@ -152,8 +216,11 @@ export const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleWindowFocus);
+      window.removeEventListener('blur', handleWindowBlur);
     };
-  }, [updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave]);
+  }, [updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave, handleVisibilityChange, handleWindowFocus, handleWindowBlur]);
 
   // Cleanup old trails periodically
   useEffect(() => {
