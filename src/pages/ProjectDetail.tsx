@@ -5,6 +5,7 @@ import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { BackToTop } from "../components/ui/back-to-top";
+import { CustomCursor } from "../components/ui/custom-cursor";
 import { ArrowLeft, Globe, Users, Calendar, MapPin, Zap, Shield, Code, Rocket } from "lucide-react";
 
 export const ProjectDetail = (): JSX.Element => {
@@ -89,6 +90,7 @@ export const ProjectDetail = (): JSX.Element => {
           </button>
         </div>
         <BackToTop />
+        <CustomCursor />
       </div>
     );
   }
@@ -339,6 +341,9 @@ export const ProjectDetail = (): JSX.Element => {
 
       {/* Back to Top Button */}
       <BackToTop />
+      
+      {/* Custom Cursor */}
+      <CustomCursor />
     </div>
   );
 };

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { Button } from "../components/ui/button";
 import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -10,6 +9,7 @@ import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { TestimonialCarouselSection } from "../components/sections/TestimonialCarouselSection";
 import { TechIconSafe } from "../components/TechIconSafe";
 import { BackToTop } from "../components/ui/back-to-top";
+import { CustomCursor } from "../components/ui/custom-cursor";
 
 // Importez le type TechName depuis le composant TechIconSafe
 type TechName = 
@@ -252,6 +252,9 @@ export const Portfolio = (): JSX.Element => {
 
       {/* Back to Top Button */}
       <BackToTop />
+      
+      {/* Custom Cursor */}
+      <CustomCursor />
     </div>
   );
 }; 
