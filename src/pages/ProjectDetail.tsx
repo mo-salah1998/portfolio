@@ -117,6 +117,11 @@ export const ProjectDetail = (): JSX.Element => {
             <img
               src={project.imageUrl}
               alt={project.title}
+              loading="eager"
+              decoding="async"
+              width={1200}
+              height={450}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
               className="w-full h-auto max-h-[400px] md:max-h-[450px] object-cover"
             />
           </div>

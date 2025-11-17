@@ -83,19 +83,35 @@ export const Portfolio = (): JSX.Element => {
               transform: 'translateX(-50%)'
             }}></div>
             {isRTL ? (
-              <div className="relative w-52 h-52 rounded-full bg-[url(/avatar2.png)] bg-cover bg-center"
+              <img
+                src="/avatar2.png"
+                alt="Profile"
+                loading="eager"
+                decoding="async"
+                width={208}
+                height={208}
+                className="relative w-52 h-52 rounded-full object-cover"
+                style={{
+                  top: '0px',
+                  left: '31%',
+                  transform: 'translateX(-50%)'
+                }}
+              />
+          ):(
+            <img
+              src="/avatar2.png"
+              alt="Profile"
+              loading="eager"
+              decoding="async"
+              width={208}
+              height={208}
+              className="relative w-52 h-52 rounded-full object-cover"
               style={{
                 top: '0px',
-                left: '31%',
+                left: '50%',
                 transform: 'translateX(-50%)'
-              }} />
-          ):(
-            <div className="relative w-52 h-52 rounded-full bg-[url(/avatar2.png)] bg-cover bg-center"
-            style={{
-              top: '0px',
-              left: '50%',
-              transform: 'translateX(-50%)'
-            }} />
+              }}
+            />
           )}
           </div>
 

@@ -1,11 +1,9 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../lib/theme-context";
 
 export const Footer = (): JSX.Element => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { theme } = useTheme();
-  const isRTL = i18n.language === 'ar';
   
   const socialLinks = [
     { name: "GitHub", url: "https://github.com/mo-salah1998", icon: "/github.svg" },
@@ -60,6 +58,8 @@ export const Footer = (): JSX.Element => {
                   <img 
                     src={link.icon} 
                     alt={link.name} 
+                    loading="lazy"
+                    decoding="async"
                     className={`w-8 h-8 ${theme === 'dark' ? 'filter invert' : ''}`} 
                   />
                 </a>
