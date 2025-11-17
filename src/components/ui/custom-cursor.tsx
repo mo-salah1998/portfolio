@@ -73,7 +73,16 @@ export const CustomCursor: React.FC = () => {
   const handleMouseMove = useCallback((e: MouseEvent) => {
     mousePos.current.x = e.clientX;
     mousePos.current.y = e.clientY;
-  }, []);
+    
+    // Ensure cursor is visible and animation is running when mouse moves
+    if (!isVisible) {
+      setIsVisible(true);
+    }
+    
+    if (!animationFrameId.current) {
+      animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+    }
+  }, [isVisible, updateCursorPosition]);
 
   // Optimized element detection with debouncing
   const handleMouseOver = useCallback((e: MouseEvent) => {
@@ -124,8 +133,19 @@ export const CustomCursor: React.FC = () => {
     }
   }, []);
 
-  const handleMouseEnter = useCallback(() => setIsVisible(true), []);
-  const handleMouseLeave = useCallback(() => setIsVisible(false), []);
+  const handleMouseEnter = useCallback(() => {
+    setIsVisible(true);
+    // Restart animation if it was stopped
+    if (!animationFrameId.current) {
+      animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+    }
+  }, [updateCursorPosition]);
+  
+  const handleMouseLeave = useCallback(() => {
+    setIsVisible(false);
+    // Don't stop animation completely, just hide cursor
+    // This prevents issues when mouse re-enters
+  }, []);
 
   // Handle page visibility changes (tab switching)
   const handleVisibilityChange = useCallback(() => {
@@ -173,10 +193,21 @@ export const CustomCursor: React.FC = () => {
   }, [updateCursorPosition]);
 
   const handleWindowBlur = useCallback(() => {
-    if (animationFrameId.current) {
-      cancelAnimationFrame(animationFrameId.current);
-      animationFrameId.current = undefined;
+    // Don't stop animation on blur, just hide cursor
+    setIsVisible(false);
+  }, []);
+
+  // Handle mouse enter on document (more reliable than window events)
+  const handleDocumentMouseEnter = useCallback(() => {
+    setIsVisible(true);
+    if (!animationFrameId.current) {
+      animationFrameId.current = requestAnimationFrame(updateCursorPosition);
     }
+  }, [updateCursorPosition]);
+
+  // Handle mouse leave on document
+  const handleDocumentMouseLeave = useCallback(() => {
+    setIsVisible(false);
   }, []);
 
   useEffect(() => {
@@ -193,11 +224,15 @@ export const CustomCursor: React.FC = () => {
 
     // Add event listeners with passive option for better performance
     document.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.addEventListener('mouseenter', handleMouseEnter, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    document.addEventListener('mouseenter', handleDocumentMouseEnter, { passive: true });
+    document.addEventListener('mouseleave', handleDocumentMouseLeave, { passive: true });
     document.addEventListener('mouseover', handleMouseOver, { passive: true });
     document.addEventListener('mousedown', handleMouseDown, { passive: true });
     document.addEventListener('mouseup', handleMouseUp, { passive: true });
+    
+    // Add body-level mouse events for better coverage
+    document.body.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+    document.body.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     
     // Add visibility change listeners
     document.addEventListener('visibilitychange', handleVisibilityChange, { passive: true });
@@ -211,28 +246,41 @@ export const CustomCursor: React.FC = () => {
       }
       
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleDocumentMouseEnter);
+      document.removeEventListener('mouseleave', handleDocumentMouseLeave);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.body.removeEventListener('mouseenter', handleMouseEnter);
+      document.body.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('focus', handleWindowFocus);
       window.removeEventListener('blur', handleWindowBlur);
     };
-  }, [updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave, handleVisibilityChange, handleWindowFocus, handleWindowBlur]);
+  }, [updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave, handleDocumentMouseEnter, handleDocumentMouseLeave, handleVisibilityChange, handleWindowFocus, handleWindowBlur]);
 
-  // Cleanup old trails periodically
+  // Cleanup old trails periodically and check cursor state
   useEffect(() => {
     const cleanup = setInterval(() => {
       const now = Date.now();
       setTrails(prevTrails => 
         prevTrails.filter(trail => now - trail.timestamp < 600)
       );
+      
+      // Failsafe: If mouse is over the document and cursor is not visible, make it visible
+      if (!document.hidden && !isVisible) {
+        const mouseOverDocument = document.querySelector(':hover');
+        if (mouseOverDocument) {
+          setIsVisible(true);
+          if (!animationFrameId.current) {
+            animationFrameId.current = requestAnimationFrame(updateCursorPosition);
+          }
+        }
+      }
     }, 100);
     
     return () => clearInterval(cleanup);
-  }, []);
+  }, [isVisible, updateCursorPosition]);
 
   if (!isVisible) return null;
 
