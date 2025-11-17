@@ -7,6 +7,10 @@ export const TestimonialCarouselSection = (): JSX.Element => {
   const { theme } = useTheme();
   const isRTL = i18n.language === 'ar';
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<'next' | 'prev' | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
   
   // Testimonials data from translations
   const testimonials = [
@@ -49,36 +53,94 @@ export const TestimonialCarouselSection = (): JSX.Element => {
   ];
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('next');
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      setTimeout(() => {
+        setIsAnimating(false);
+        setDirection(null);
+      }, 50);
+    }, 200);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setDirection('prev');
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setTimeout(() => {
+        setIsAnimating(false);
+        setDirection(null);
+      }, 50);
+    }, 200);
   };
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    if (isAnimating || index === currentIndex) return;
+    setIsAnimating(true);
+    setDirection(index > currentIndex ? 'next' : 'prev');
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setTimeout(() => {
+        setIsAnimating(false);
+        setDirection(null);
+      }, 50);
+    }, 200);
   };
 
-  // Auto-play functionality (optional - can be removed if not wanted)
+  // Progress bar animation
   useEffect(() => {
+    if (isPaused || isAnimating) return;
+    
+    setProgress(0);
+    const progressInterval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          return 0;
+        }
+        return prev + 2; // Increment by 2% every 100ms (5000ms total = 100%)
+      });
+    }, 100);
+
+    return () => clearInterval(progressInterval);
+  }, [currentIndex, isPaused, isAnimating]);
+
+  // Auto-play functionality with pause on hover
+  useEffect(() => {
+    if (isPaused || isAnimating) return;
+    
     const interval = setInterval(() => {
-      nextSlide();
-    }, 6000); // Change slide every 6 seconds
+      if (!isPaused && !isAnimating) {
+        nextSlide();
+      }
+    }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, isPaused, isAnimating]);
 
   return (
     <div dir={isRTL ? 'rtl' : 'ltr'} className="px-4 md:px-6 mt-4 w-full max-w-5xl mx-auto">
       {/* Carousel Container */}
-      <div className="relative">
+      <div 
+        className="relative"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Testimonial Card */}
-        <div className="overflow-hidden h-[500px] md:h-[450px]">
+        <div className="overflow-hidden h-[500px] md:h-[450px] relative">
           <div 
-            className={`p-8 md:p-12 rounded-xl transition-all duration-500 h-full flex flex-col justify-between ${
+            className={`p-8 md:p-12 rounded-xl h-full flex flex-col justify-between transition-all duration-700 ease-in-out transform ${
+              isAnimating 
+                ? direction === 'next' 
+                  ? 'translate-x-full opacity-0 scale-95' 
+                  : 'translate-x-[-100%] opacity-0 scale-95'
+                : 'translate-x-0 opacity-100 scale-100'
+            } ${
               theme === 'dark' 
-                ? 'bg-[#252525] border-2 border-gray-700' 
+                ? 'bg-[#252525] border-2 border-gray-700 shadow-2xl' 
                 : 'bg-white border-2 border-gray-200 shadow-xl'
             }`}
             style={{ direction: isRTL ? 'rtl' : 'ltr', unicodeBidi: 'embed' }}
@@ -139,12 +201,15 @@ export const TestimonialCarouselSection = (): JSX.Element => {
         {/* Navigation Buttons */}
         <button
           onClick={prevSlide}
-          className={`absolute top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+          disabled={isAnimating}
+          className={`absolute top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95 ${
             isRTL ? 'right-0 md:-right-16' : 'left-0 md:-left-16'
           } ${
+            isAnimating ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+          } ${
             theme === 'dark'
-              ? 'bg-[#252525] border border-gray-700 text-white hover:bg-[#a66cff]'
-              : 'bg-white border border-gray-300 text-gray-800 hover:bg-[#a66cff] hover:text-white shadow-md'
+              ? 'bg-[#252525] border border-gray-700 text-white hover:bg-gradient-to-r hover:from-[#a66cff] hover:to-[#ff8660] hover:border-transparent'
+              : 'bg-white border border-gray-300 text-gray-800 hover:bg-gradient-to-r hover:from-[#a66cff] hover:to-[#ff8660] hover:text-white hover:border-transparent shadow-md'
           }`}
           aria-label="Previous testimonial"
         >
@@ -164,12 +229,15 @@ export const TestimonialCarouselSection = (): JSX.Element => {
 
         <button
           onClick={nextSlide}
-          className={`absolute top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+          disabled={isAnimating}
+          className={`absolute top-1/2 -translate-y-1/2 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95 ${
             isRTL ? 'left-0 md:-left-16' : 'right-0 md:-right-16'
           } ${
+            isAnimating ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
+          } ${
             theme === 'dark'
-              ? 'bg-[#252525] border border-gray-700 text-white hover:bg-[#a66cff]'
-              : 'bg-white border border-gray-300 text-gray-800 hover:bg-[#a66cff] hover:text-white shadow-md'
+              ? 'bg-[#252525] border border-gray-700 text-white hover:bg-gradient-to-r hover:from-[#a66cff] hover:to-[#ff8660] hover:border-transparent'
+              : 'bg-white border border-gray-300 text-gray-800 hover:bg-gradient-to-r hover:from-[#a66cff] hover:to-[#ff8660] hover:text-white hover:border-transparent shadow-md'
           }`}
           aria-label="Next testimonial"
         >
@@ -189,20 +257,29 @@ export const TestimonialCarouselSection = (): JSX.Element => {
       </div>
 
       {/* Dots Navigation */}
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="flex justify-center gap-3 mt-8">
         {testimonials.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            disabled={isAnimating}
+            className={`relative rounded-full transition-all duration-500 ease-out transform hover:scale-125 active:scale-95 ${
               currentIndex === index
-                ? 'bg-gradient-to-r from-[#a66cff] to-[#ff8660] w-8'
-                : theme === 'dark'
-                ? 'bg-gray-600 hover:bg-gray-500'
-                : 'bg-gray-300 hover:bg-gray-400'
+                ? 'w-10 h-3 bg-gradient-to-r from-[#a66cff] to-[#ff8660] shadow-lg'
+                : `w-3 h-3 ${
+                    theme === 'dark'
+                      ? 'bg-gray-600 hover:bg-gray-500 hover:shadow-md'
+                      : 'bg-gray-300 hover:bg-gray-400 hover:shadow-md'
+                  }`
+            } ${
+              isAnimating ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
             }`}
             aria-label={`Go to testimonial ${index + 1}`}
-          />
+          >
+            {currentIndex === index && (
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#a66cff] to-[#ff8660] animate-pulse opacity-30"></div>
+            )}
+          </button>
         ))}
       </div>
     </div>
