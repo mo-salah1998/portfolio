@@ -73,7 +73,7 @@ export const Portfolio = (): JSX.Element => {
 
       <div className="px-4 mx-auto max-w-7xl">
         {/* Profile Section */}
-        <div id="home" className="flex flex-col items-center pt-20 mt-28 w-full md:px-6">
+        <div id="home" className="flex flex-col items-center pt-20 mt-24 w-full md:px-6">
           <div className="relative w-64 h-56">
             {/* Circular background for avatar that matches the gradient text color */}
             <div className="absolute w-52 h-52 rounded-full" style={{
@@ -90,7 +90,7 @@ export const Portfolio = (): JSX.Element => {
                 decoding="async"
                 width={208}
                 height={208}
-                className="relative w-52 h-52 rounded-full object-cover"
+                className="object-cover relative w-52 h-52 rounded-full"
                 style={{
                   top: '0px',
                   left: '31%',
@@ -105,7 +105,7 @@ export const Portfolio = (): JSX.Element => {
               decoding="async"
               width={208}
               height={208}
-              className="relative w-52 h-52 rounded-full object-cover"
+              className="object-cover relative w-52 h-52 rounded-full"
               style={{
                 top: '0px',
                 left: '50%',
@@ -140,7 +140,7 @@ export const Portfolio = (): JSX.Element => {
           </div>
 
           {/* Call to Action */}
-          <div className="flex flex-col items-center gap-4 mt-12">
+          <div className="flex flex-col gap-4 items-center mt-12">
             <button
               onClick={() => window.open('https://wa.me/21650011366', '_blank')}
               className={`group relative px-8 py-5 rounded-full font-sans text-xl font-bold overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl ${
@@ -152,7 +152,7 @@ export const Portfolio = (): JSX.Element => {
                 animation: 'pulse-glow 3s ease-in-out infinite'
               }}
             >
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="flex relative z-10 gap-3 items-center">
                 {/* WhatsApp Icon */}
                 <svg 
                   className="w-7 h-7" 
