@@ -6,6 +6,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { BackToTop } from "../components/ui/back-to-top";
 import { CustomCursor } from "../components/ui/custom-cursor";
+import { Button } from "../components/ui/button";
 import { ArrowLeft, Globe, Users, Calendar, MapPin, Zap, Shield, Code, Rocket } from "lucide-react";
 
 export const ProjectDetail = (): JSX.Element => {
@@ -82,12 +83,13 @@ export const ProjectDetail = (): JSX.Element => {
           <h1 className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
             Project not found
           </h1>
-          <button
+          <Button
+            variant="gradient"
             onClick={() => navigate('/')}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="mt-4"
           >
             {t('backToProjects')}
-          </button>
+          </Button>
         </div>
         <BackToTop />
         <CustomCursor />
@@ -101,17 +103,18 @@ export const ProjectDetail = (): JSX.Element => {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 mt-28 pt-8 pb-16">
         {/* Back Button */}
-        <button
+        <Button
+          variant="outline"
           onClick={() => navigate('/', { state: { scrollTo: 'projects' } })}
-          className={`flex items-center gap-2 mb-8 px-4 py-2 rounded-lg transition-colors ${
+          className={`mb-8 group ${
             theme === 'dark' 
-              ? 'bg-[#252525] text-white hover:bg-[#2a2a2a]' 
-              : 'bg-white text-gray-800 hover:bg-gray-50 border border-gray-200'
+              ? 'bg-[#252525] text-white hover:bg-[#2a2a2a] border-gray-700 hover:border-gray-600' 
+              : 'bg-white text-gray-800 hover:bg-gray-50 border-gray-200 hover:border-gray-300'
           }`}
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>{t('backToProjects')}</span>
-        </button>
+          <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
+          {t('backToProjects')}
+        </Button>
 
         {/* Hero Section with Image */}
         <div className="mb-12">
@@ -311,25 +314,42 @@ export const ProjectDetail = (): JSX.Element => {
             {/* Project Links */}
             <div className={`flex flex-col gap-3 ${isRTL ? 'items-end' : 'items-start'}`}>
               {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-center min-w-[200px] flex items-center justify-center gap-2"
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  asChild
+                  className="group relative overflow-hidden min-w-[200px]"
                 >
-                  <Globe className="w-5 h-5" />
-                  {project.id === '2' ? t('orangeTunisieVersion') : 'Visit Website'}
-                </a>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Globe className="w-5 h-5 mr-2 transition-transform group-hover:scale-110" />
+                    {project.id === '2' ? t('orangeTunisieVersion') : 'Visit Website'}
+                    {/* Animated background on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#ff8660] to-[#a66cff] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                  </a>
+                </Button>
               )}
               {(project as any).liveUrl2 && (
-                <a
-                  href={(project as any).liveUrl2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition-colors font-medium text-center min-w-[200px]"
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  asChild
+                  className="group relative overflow-hidden min-w-[200px] bg-gradient-to-r from-[#ff8660] to-[#ff6b47]"
                 >
-                  {t('orangeMEAVersion')}
-                </a>
+                  <a
+                    href={(project as any).liveUrl2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Globe className="w-5 h-5 mr-2 transition-transform group-hover:scale-110" />
+                    {t('orangeMEAVersion')}
+                    {/* Animated background on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#ff6b47] to-[#ff8660] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                  </a>
+                </Button>
               )}
             </div>
           </div>

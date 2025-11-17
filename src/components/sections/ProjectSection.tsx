@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../lib/theme-context";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../ui/card";
+import { Button } from "../ui/button";
+import { ExternalLink } from "lucide-react";
 
 export const ProjectSection = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -126,15 +128,24 @@ export const ProjectSection = (): JSX.Element => {
               
               {project.liveUrl && (
                 <div className={`mt-4 ${isRTL ? 'flex justify-end' : 'flex justify-start'}`}>
-                  <a 
-                    href={project.liveUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="px-6 py-3 rounded-lg font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700"
+                  <Button
+                    variant="gradient"
+                    size="lg"
+                    asChild
+                    className="group relative overflow-hidden"
                   >
-                    Live Demo
-                  </a>
+                    <a 
+                      href={project.liveUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
+                      Live Demo
+                      {/* Animated background on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#ff8660] to-[#a66cff] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                    </a>
+                  </Button>
                 </div>
               )}
             </div>
