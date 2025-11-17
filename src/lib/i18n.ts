@@ -16,10 +16,10 @@ const enTranslations = {
   downloadCV: 'Download CV',
   whatsappSubtext: '💬 Chat with me on WhatsApp - Quick response guaranteed!',
   // Sections
-  experienceWith: 'EXPERIENCE WITH',
-  projectsTitle: 'PROJECTS',
-  experienceTitle: 'EXPERIENCE',
-  testimonialsTitle: 'TESTIMONIALS',
+  experienceWith: '💻 TECHNOLOGIES I LOVE',
+  projectsTitle: '🚀 THINGS I\'VE BUILT',
+  experienceTitle: '✨ MY JOURNEY',
+  testimonialsTitle: '💬 WHAT PEOPLE SAY',
   // Footer
   footerText: 'Seasoned Full Stack Software Engineer with over 3 years of hands-on experience in designing and implementing robust, scalable, and innovative web solutions. Adept at leveraging a comprehensive skill set encompassing front-end and back-end technologies',
   email: 'Email',
@@ -169,10 +169,10 @@ const frTranslations = {
   downloadCV: 'Télécharger CV',
   whatsappSubtext: '💬 Discutez avec moi sur WhatsApp - Réponse rapide garantie !',
   // Sections
-  experienceWith: 'EXPÉRIENCE AVEC',
-  projectsTitle: 'PROJETS',
-  experienceTitle: 'EXPÉRIENCE',
-  testimonialsTitle: 'TÉMOIGNAGES',
+  experienceWith: '💻 TECHNOLOGIES QUE J\'ADORE',
+  projectsTitle: '🚀 CE QUE J\'AI CRÉÉ',
+  experienceTitle: '✨ MON PARCOURS',
+  testimonialsTitle: '💬 CE QU\'ILS DISENT',
   // Footer
   footerText: 'Ingénieur logiciel full stack expérimenté avec plus de 3 ans d\'expérience pratique dans la conception et la mise en œuvre de solutions web robustes, évolutives et innovantes. Habile à exploiter un ensemble complet de compétences englobant les technologies front-end et back-end',
   email: 'Email',
@@ -322,10 +322,10 @@ const arTranslations = {
   downloadCV: 'تحميل السيرة الذاتية',
   whatsappSubtext: '💬 دردش معي على واتساب - استجابة سريعة مضمونة!',
   // Sections
-  experienceWith: 'خبرة مع',
-  projectsTitle: 'المشاريع',
-  experienceTitle: 'الخبرات',
-  testimonialsTitle: 'الشهادات',
+  experienceWith: '💻 التقنيات التي أحبها',
+  projectsTitle: '🚀 أشياء بنيتها',
+  experienceTitle: '✨ رحلتي المهنية',
+  testimonialsTitle: '💬 ماذا يقولون',
   // Footer
   footerText: 'مهندس برمجيات متكامل ذو خبرة تزيد عن 3 سنوات في تصميم وتنفيذ حلول ويب قوية وقابلة للتوسع ومبتكرة. بارع في الاستفادة من مجموعة شاملة من المهارات التي تشمل تقنيات الواجهة الأمامية والخلفية',
   email: 'البريد الإلكتروني',
