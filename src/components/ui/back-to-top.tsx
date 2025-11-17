@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useTheme } from "../../lib/theme-context";
 
 export const BackToTop = (): JSX.Element | null => {
   const [isVisible, setIsVisible] = useState(false);
-  const { theme } = useTheme();
 
   // Show button when page is scrolled down
   useEffect(() => {
@@ -37,11 +35,10 @@ export const BackToTop = (): JSX.Element | null => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl ${
-        theme === "dark"
-          ? "bg-blue-600 hover:bg-blue-700 text-white"
-          : "bg-blue-500 hover:bg-blue-600 text-white"
-      }`}
+      className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl text-white"
+      style={{
+        background: 'linear-gradient(90deg, rgba(166,108,255,0.8) 0%, rgba(255,134,96,0.8) 100%)'
+      }}
       aria-label="Back to top"
     >
       <svg

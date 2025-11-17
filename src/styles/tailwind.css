@@ -344,4 +344,31 @@
 .rtl-nav {
   display: flex;
   flex-direction: row-reverse;
+}
+
+/* CTA Button Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(166, 108, 255, 0.4), 0 0 40px rgba(255, 134, 96, 0.2);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(166, 108, 255, 0.6), 0 0 60px rgba(255, 134, 96, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
 } 
