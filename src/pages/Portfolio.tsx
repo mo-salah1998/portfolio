@@ -7,7 +7,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
-import { TestimonialSection } from "../components/sections/TestimonialSection";
+import { TestimonialCarouselSection } from "../components/sections/TestimonialCarouselSection";
 import { TechIconSafe } from "../components/TechIconSafe";
 import { BackToTop } from "../components/ui/back-to-top";
 
@@ -241,7 +241,7 @@ export const Portfolio = (): JSX.Element => {
 
         {/* Testimonials Section */}
         <div className="w-full">
-          <TestimonialSection />
+          <TestimonialCarouselSection />
         </div>
       </div>
 
