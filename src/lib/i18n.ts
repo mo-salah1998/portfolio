@@ -19,6 +19,7 @@ const enTranslations = {
   experienceWith: 'EXPERIENCE WITH',
   projectsTitle: 'PROJECTS',
   experienceTitle: 'EXPERIENCE',
+  testimonialsTitle: 'TESTIMONIALS',
   // Footer
   footerText: 'Seasoned Full Stack Software Engineer with over 3 years of hands-on experience in designing and implementing robust, scalable, and innovative web solutions. Adept at leveraging a comprehensive skill set encompassing front-end and back-end technologies',
   email: 'Email',
@@ -60,6 +61,43 @@ const enTranslations = {
     role: 'FullStack JavaScript Developer',
     period: 'Mar 2022 - Sep 2022',
     description: 'Designed and developed a platform for delivery companies, partnered with Addresti using the MERN stack.',
+  },
+  // Testimonials
+  testimonial1: {
+    name: 'Leila Meherzi',
+    role: 'Technical Director & Activity Programs of Digital Inclusion Program',
+    relation: 'Senior Colleague at Orange Digital Center MEA',
+    text: 'I had the opportunity to collaborate with Mohamed Salah Naija in the development of a website for several countries. This project, carried out under particularly tight deadlines, was successfully completed thanks to his professionalism, responsiveness, and exemplary commitment. Mohamed Salah is an excellent developer for any project requiring both technical expertise, creativity, and attention to detail.',
+  },
+  testimonial2: {
+    name: 'Souha Bejaoui',
+    role: 'CEO of ProVerdy: Carbon Footprint Platform | Bilan Carbone | Startup Climate Tech',
+    relation: 'Client & Collaborator',
+    text: 'Thank you so much, Mohamed Salah, for your precious help and unwavering commitment throughout this deployment! Your expertise and dedication made a real difference, and I\'m grateful for the great collaboration. Looking forward to working together on the next challenges!',
+  },
+  testimonial3: {
+    name: 'Nermine Ouada',
+    role: 'CS Engineering Student | Web Developer | IEEE Volunteer',
+    relation: 'Mentee at Orange Digital Center',
+    text: 'Mohamed Salah was my mentor during my four-month internship at Orange. His guidance had a significant impact on my technical growth and professional development. His deep knowledge of full-stack development and system architecture helped me overcome several real-world challenges during our project. He took the time to clearly explain complex concepts, encouraged the adoption of best practices, and always pushed me to think critically and independently. Beyond the technical side, his mentorship created a positive and motivating environment that made me more confident and efficient in my work. I\'m truly grateful for everything he shared with me and highly recommend him as a skilled engineer and an exceptional mentor.',
+  },
+  testimonial4: {
+    name: 'Walid Dridi',
+    role: 'Kubernetes Expert/Trainer - Platform Architect',
+    relation: 'CEO of POCTEO',
+    text: 'Mohamed was a hardworking and skilled web developer, always respectful and a great team player. His efficiency and determination made him a valuable contributor to our project.',
+  },
+  testimonial5: {
+    name: 'Yassine Zaghla',
+    role: 'Industrial and Automation IT Engineering Student at INSAT',
+    relation: 'Mentee at Orange Digital Center',
+    text: 'I would like to express my deep gratitude to my mentor, Mohamed Salah, for his invaluable support and guidance throughout my internship with Orange. His expertise, patience, and ability to convey complex knowledge in a simple manner played a crucial role in my learning. Thanks to his valuable advice, I was able to overcome technical challenges, strengthen my skills, and discover new innovative approaches in the field. It was a privilege to be guided by such a passionate and dedicated professional.',
+  },
+  testimonial6: {
+    name: 'Farah Metoui',
+    role: 'Computer Engineering Student Specialized in Web and Internet Technologies',
+    relation: 'Mentee at Orange Digital Center',
+    text: 'Mohamed Salah played a crucial role in helping us develop our project, bringing exceptional expertise in web development. His deep understanding of technologies and his ability to provide practical solutions greatly contributed to the success of our work. We truly appreciated his support, professionalism, and dedication throughout the process.',
   },
   // Project entries
   project1: {
@@ -134,6 +172,7 @@ const frTranslations = {
   experienceWith: 'EXPÉRIENCE AVEC',
   projectsTitle: 'PROJETS',
   experienceTitle: 'EXPÉRIENCE',
+  testimonialsTitle: 'TÉMOIGNAGES',
   // Footer
   footerText: 'Ingénieur logiciel full stack expérimenté avec plus de 3 ans d\'expérience pratique dans la conception et la mise en œuvre de solutions web robustes, évolutives et innovantes. Habile à exploiter un ensemble complet de compétences englobant les technologies front-end et back-end',
   email: 'Email',
@@ -175,6 +214,43 @@ const frTranslations = {
     role: 'Développeur JavaScript Full Stack',
     period: 'Mars 2022 - Sept 2022',
     description: 'Conception et développement d\'une plateforme pour les entreprises de livraison, en partenariat avec Addresti, utilisant la stack MERN.',
+  },
+  // Testimonials
+  testimonial1: {
+    name: 'Leila Meherzi',
+    role: 'Directrice Technique & Programmes d\'Activités du Programme d\'Inclusion Numérique',
+    relation: 'Collègue Senior à Orange Digital Center MEA',
+    text: 'J\'ai eu l\'opportunité de collaborer avec Mohamed Salah Naija dans le cadre du développement d\'un site web destiné à plusieurs pays. Ce projet, mené dans des délais particulièrement serrés, a pu être réalisé avec succès grâce à son professionnalisme, sa réactivité et son engagement exemplaire. Mohamed Salah est un excellent développeur pour tout projet nécessitant à la fois expertise technique, créativité et sens du détail.',
+  },
+  testimonial2: {
+    name: 'Souha Bejaoui',
+    role: 'PDG de ProVerdy : Plateforme d\'Empreinte Carbone | Bilan Carbone | Startup Climate Tech',
+    relation: 'Cliente & Collaboratrice',
+    text: 'Merci beaucoup, Mohamed Salah, pour ton aide précieuse et ton engagement sans faille tout au long de ce déploiement ! Ton expertise et ton dévouement ont fait une vraie différence, et je suis reconnaissante pour cette excellente collaboration. Hâte de travailler ensemble sur les prochains défis !',
+  },
+  testimonial3: {
+    name: 'Nermine Ouada',
+    role: 'Étudiante en Ingénierie Informatique | Développeuse Web | Bénévole IEEE',
+    relation: 'Mentorée à Orange Digital Center',
+    text: 'Mohamed Salah a été mon mentor lors de mon stage de quatre mois chez Orange. Ses conseils ont eu un impact significatif sur ma croissance technique et mon développement professionnel. Sa connaissance approfondie du développement full-stack et de l\'architecture système m\'a aidée à surmonter plusieurs défis réels au cours de notre projet. Il a pris le temps d\'expliquer clairement des concepts complexes, encouragé l\'adoption des meilleures pratiques et m\'a toujours poussée à réfléchir de manière critique et indépendante. Au-delà de l\'aspect technique, son mentorat a créé un environnement positif et motivant qui m\'a rendue plus confiante et efficace dans mon travail. Je suis vraiment reconnaissante pour tout ce qu\'il a partagé avec moi et je le recommande vivement en tant qu\'ingénieur compétent et mentor exceptionnel.',
+  },
+  testimonial4: {
+    name: 'Walid Dridi',
+    role: 'Expert/Formateur Kubernetes - Architecte de Plateforme',
+    relation: 'PDG de POCTEO',
+    text: 'Mohamed était un développeur web travailleur et compétent, toujours respectueux et un excellent coéquipier. Son efficacité et sa détermination ont fait de lui un contributeur précieux à notre projet.',
+  },
+  testimonial5: {
+    name: 'Yassine Zaghla',
+    role: 'Étudiant en Ingénierie Informatique Industrielle et Automatisation à l\'INSAT',
+    relation: 'Mentoré à Orange Digital Center',
+    text: 'Je tiens à exprimer ma profonde gratitude envers mon mentor, Mohamed Salah, pour son soutien inestimable et son encadrement tout au long de mon stage avec Orange. Son expertise, sa patience et sa capacité à transmettre des connaissances complexes de manière simple ont joué un rôle crucial dans mon apprentissage. Grâce à ses précieux conseils, j\'ai pu surmonter des défis techniques, renforcer mes compétences et découvrir de nouvelles approches innovantes dans le domaine. C\'était un privilège d\'être guidé par un professionnel aussi passionné et engagé.',
+  },
+  testimonial6: {
+    name: 'Farah Metoui',
+    role: 'Étudiante en Ingénierie Informatique Spécialisée en Technologies du Web et de l\'Internet',
+    relation: 'Mentorée à Orange Digital Center',
+    text: 'Mohamed Salah a joué un rôle crucial en nous aidant à développer notre projet, apportant une expertise exceptionnelle en développement web. Sa compréhension approfondie des technologies et sa capacité à fournir des solutions pratiques ont grandement contribué au succès de notre travail. Nous avons vraiment apprécié son soutien, son professionnalisme et son dévouement tout au long du processus.',
   },
   // Project entries
   project1: {
@@ -249,6 +325,7 @@ const arTranslations = {
   experienceWith: 'خبرة مع',
   projectsTitle: 'المشاريع',
   experienceTitle: 'الخبرات',
+  testimonialsTitle: 'الشهادات',
   // Footer
   footerText: 'مهندس برمجيات متكامل ذو خبرة تزيد عن 3 سنوات في تصميم وتنفيذ حلول ويب قوية وقابلة للتوسع ومبتكرة. بارع في الاستفادة من مجموعة شاملة من المهارات التي تشمل تقنيات الواجهة الأمامية والخلفية',
   email: 'البريد الإلكتروني',
@@ -290,6 +367,43 @@ const arTranslations = {
     role: 'مطور جافاسكريبت متكامل',
     period: 'مارس 2022 - سبتمبر 2022',
     description: 'تصميم وتطوير منصة لشركات التوصيل، بالشراكة مع Addresti باستخدام مجموعة تقنيات MERN.',
+  },
+  // Testimonials
+  testimonial1: {
+    name: 'ليلى مهرزي',
+    role: 'المديرة التقنية وبرامج الأنشطة لبرنامج الشمول الرقمي',
+    relation: 'زميلة أقدم في مركز أورانج الرقمي MEA',
+    text: 'أتيحت لي الفرصة للتعاون مع محمد صالح نايجة في تطوير موقع ويب لعدة دول. تم إنجاز هذا المشروع، الذي نُفذ في مواعيد نهائية ضيقة للغاية، بنجاح بفضل احترافيته واستجابته والتزامه المثالي. محمد صالح مطور ممتاز لأي مشروع يتطلب الخبرة التقنية والإبداع والاهتمام بالتفاصيل.',
+  },
+  testimonial2: {
+    name: 'سهى بجاوي',
+    role: 'الرئيسة التنفيذية لـ ProVerdy: منصة البصمة الكربونية | Bilan Carbone | ناشئة تكنولوجيا المناخ',
+    relation: 'عميلة ومتعاونة',
+    text: 'شكرًا جزيلاً، محمد صالح، على مساعدتك الثمينة والتزامك الثابت طوال هذا النشر! خبرتك وتفانيك أحدثا فرقًا حقيقيًا، وأنا ممتنة للتعاون الرائع. أتطلع إلى العمل معًا على التحديات القادمة!',
+  },
+  testimonial3: {
+    name: 'نرمين عوادة',
+    role: 'طالبة هندسة علوم الحاسوب | مطورة ويب | متطوعة IEEE',
+    relation: 'متدربة في مركز أورانج الرقمي',
+    text: 'كان محمد صالح مرشدي خلال فترة تدريبي التي استمرت أربعة أشهر في أورانج. كان لتوجيهه تأثير كبير على نموي التقني وتطوري المهني. ساعدتني معرفته العميقة بتطوير الويب الكامل وبنية الأنظمة على التغلب على العديد من التحديات الواقعية خلال مشروعنا. أخذ الوقت الكافي لشرح المفاهيم المعقدة بوضوح، وشجع على اعتماد أفضل الممارسات، ودفعني دائمًا للتفكير بشكل نقدي ومستقل. بالإضافة إلى الجانب التقني، خلق إرشاده بيئة إيجابية ومحفزة جعلتني أكثر ثقة وكفاءة في عملي. أنا ممتنة حقًا لكل ما شاركه معي وأوصي به بشدة كمهندس ماهر ومرشد استثنائي.',
+  },
+  testimonial4: {
+    name: 'وليد الدريدي',
+    role: 'خبير/مدرب Kubernetes - مهندس معماري للمنصات',
+    relation: 'الرئيس التنفيذي لـ POCTEO',
+    text: 'كان محمد مطور ويب مجتهدًا وماهرًا، دائمًا محترم ولاعب فريق رائع. جعلته كفاءته وتصميمه مساهمًا قيمًا في مشروعنا.',
+  },
+  testimonial5: {
+    name: 'ياسين الزغلة',
+    role: 'طالب هندسة تكنولوجيا المعلومات الصناعية والأتمتة في INSAT',
+    relation: 'متدرب في مركز أورانج الرقمي',
+    text: 'أود أن أعرب عن امتناني العميق لمرشدي محمد صالح، لدعمه القيم وتوجيهه طوال فترة تدريبي مع أورانج. لعبت خبرته وصبره وقدرته على نقل المعرفة المعقدة بطريقة بسيطة دورًا حاسمًا في تعلمي. بفضل نصائحه القيمة، تمكنت من التغلب على التحديات التقنية وتعزيز مهاراتي واكتشاف أساليب مبتكرة جديدة في هذا المجال. كان شرفًا لي أن أكون تحت إشراف محترف شغوف وملتزم للغاية.',
+  },
+  testimonial6: {
+    name: 'فرح المتوي',
+    role: 'طالبة هندسة حاسوب متخصصة في تقنيات الويب والإنترنت',
+    relation: 'متدربة في مركز أورانج الرقمي',
+    text: 'لعب محمد صالح دورًا حاسمًا في مساعدتنا على تطوير مشروعنا، حيث قدم خبرة استثنائية في تطوير الويب. ساهم فهمه العميق للتقنيات وقدرته على تقديم حلول عملية بشكل كبير في نجاح عملنا. لقد قدرنا حقًا دعمه واحترافيته وتفانيه طوال العملية.',
   },
   // Project entries
   project1: {

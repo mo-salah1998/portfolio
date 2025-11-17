@@ -7,6 +7,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
+import { TestimonialSection } from "../components/sections/TestimonialSection";
 import { TechIconSafe } from "../components/TechIconSafe";
 import { BackToTop } from "../components/ui/back-to-top";
 
@@ -229,6 +230,18 @@ export const Portfolio = (): JSX.Element => {
         {/* Experience Section */}
         <div className="w-full">
           <ExperienceSection />
+        </div>
+
+        {/* Testimonials Section Title */}
+        <div id="testimonials" className="flex justify-center pt-10 mt-16 w-full text-center">
+          <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-orange md:text-4xl">
+            {t('testimonialsTitle')}
+          </h2>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="w-full">
+          <TestimonialSection />
         </div>
       </div>
 
