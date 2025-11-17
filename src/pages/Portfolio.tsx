@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import { ProjectSection } from "../components/sections/ProjectSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { TechIconSafe } from "../components/TechIconSafe";
+import { BackToTop } from "../components/ui/back-to-top";
 
 // Importez le type TechName depuis le composant TechIconSafe
 type TechName = 
@@ -205,6 +206,9 @@ export const Portfolio = (): JSX.Element => {
       <div id="contact" className="mt-12 w-full">
         <Footer />
       </div>
+
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 }; 

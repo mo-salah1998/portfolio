@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { BackToTop } from "../components/ui/back-to-top";
 import { ArrowLeft, Globe, Users, Calendar, MapPin, Zap, Shield, Code, Rocket } from "lucide-react";
 
 export const ProjectDetail = (): JSX.Element => {
@@ -87,6 +88,7 @@ export const ProjectDetail = (): JSX.Element => {
             {t('backToProjects')}
           </button>
         </div>
+        <BackToTop />
       </div>
     );
   }
@@ -329,6 +331,9 @@ export const ProjectDetail = (): JSX.Element => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 };

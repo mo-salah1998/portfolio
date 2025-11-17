@@ -26,9 +26,9 @@ const enTranslations = {
   followMe: 'Follow Me',
   allRightsReserved: 'All Rights Reserved',
   // Main title
-  codeAndTeach: 'I do code and teach',
-  studentsHow: 'students how to',
-  doItToo: 'do it too!',
+  codeAndTeach: 'I build & ship software',
+  studentsHow: 'and teach others',
+  doItToo: 'how to code.',
   // Experience entries
   experience1: {
     company: 'Orange Digital Center Tunisia - ODC',
@@ -140,9 +140,9 @@ const frTranslations = {
   followMe: 'Suivez-moi',
   allRightsReserved: 'Tous Droits Réservés',
   // Main title
-  codeAndTeach: 'Je code et j\'enseigne',
-  studentsHow: 'aux étudiants comment',
-  doItToo: 'le faire aussi !',
+  codeAndTeach: 'Je construis et livre des logiciels',
+  studentsHow: 'et j\'enseigne aux autres',
+  doItToo: 'comment coder.',
   // Experience entries
   experience1: {
     company: 'Orange Digital Center Tunisie - ODC',
@@ -254,9 +254,9 @@ const arTranslations = {
   followMe: 'تابعني',
   allRightsReserved: 'جميع الحقوق محفوظة',
   // Main title
-  codeAndTeach: 'أقوم بالبرمجة وتعليم',
-  studentsHow: 'الطلاب كيفية',
-  doItToo: 'القيام بذلك أيضًا!',
+  codeAndTeach: 'أبني وأطلق البرمجيات',
+  studentsHow: 'وأعلم الآخرين',
+  doItToo: 'كيفية البرمجة.',
   // Experience entries
   experience1: {
     company: 'مركز أورانج الرقمي تونس - ODC',
