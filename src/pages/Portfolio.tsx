@@ -185,7 +185,7 @@ export const Portfolio = (): JSX.Element => {
           </ScrollReveal>
 
           {/* Experience With Section */}
-          <div className="mt-16 w-full">
+          <div className="mt-24 w-full">
             <ScrollReveal className="w-full">
               <h3 className={`font-sans font-semibold ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-xl tracking-wider text-center`}>
               {t('experienceWith')}

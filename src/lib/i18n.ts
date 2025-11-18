@@ -323,7 +323,7 @@ const arTranslations = {
   whatsappSubtext: '💬 دردش معي على واتساب - استجابة سريعة مضمونة!',
   // Sections
   experienceWith: '💻 التقنيات التي أحبها',
-  projectsTitle: '🚀 أشياء بنيتها',
+  projectsTitle: '🚀 منصات بنيتها',
   experienceTitle: '✨ رحلتي المهنية',
   testimonialsTitle: '💬 ماذا يقولون',
   // Footer
