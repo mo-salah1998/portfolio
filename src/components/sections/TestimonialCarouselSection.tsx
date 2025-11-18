@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../lib/theme-context";
+import { ScrollReveal } from "../ui/scroll-reveal";
 
 export const TestimonialCarouselSection = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -122,7 +123,12 @@ export const TestimonialCarouselSection = (): JSX.Element => {
   }, [currentIndex, isPaused, isAnimating]);
 
   return (
-    <div dir={isRTL ? 'rtl' : 'ltr'} className="px-4 md:px-6 mt-4 w-full max-w-5xl mx-auto">
+    <ScrollReveal
+      dir={isRTL ? 'rtl' : 'ltr'}
+      className="px-4 md:px-6 mt-4 w-full max-w-5xl mx-auto"
+      amount={0.15}
+      delay={0.1}
+    >
       {/* Carousel Container */}
       <div 
         className="relative"
@@ -282,7 +288,7 @@ export const TestimonialCarouselSection = (): JSX.Element => {
           </button>
         ))}
       </div>
-    </div>
+    </ScrollReveal>
   );
 };
 

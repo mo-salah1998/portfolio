@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../lib/theme-context";
+import { ScrollReveal } from "../ui/scroll-reveal";
 
 export const ExperienceSection = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -50,8 +51,10 @@ export const ExperienceSection = (): JSX.Element => {
     <div dir={isRTL ? 'rtl' : 'ltr'} className="px-4 md:px-6 mt-4 w-full max-w-7xl mx-auto">
       <div className="space-y-12">
         {experiences.map((exp, index) => (
-          <div 
-            key={index} 
+          <ScrollReveal
+            key={index}
+            delay={index * 0.1}
+            direction={isRTL ? "left" : "right"}
             className={`p-6 rounded-lg ${
               theme === 'dark' 
                 ? 'bg-[#252525] border border-gray-700' 
@@ -132,7 +135,7 @@ export const ExperienceSection = (): JSX.Element => {
                 </div>
               </>
             )}
-          </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>

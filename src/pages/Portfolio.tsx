@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../lib/theme-context";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
@@ -10,6 +10,7 @@ import { TestimonialCarouselSection } from "../components/sections/TestimonialCa
 import { TechIconSafe } from "../components/TechIconSafe";
 import { BackToTop } from "../components/ui/back-to-top";
 import { CustomCursor } from "../components/ui/custom-cursor";
+import { ScrollReveal } from "../components/ui/scroll-reveal";
 
 // Importez le type TechName depuis le composant TechIconSafe
 type TechName = 
@@ -30,6 +31,7 @@ export const Portfolio = (): JSX.Element => {
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
   const isRTL = i18n.language === 'ar';
 
   // Technology icons data avec le bon type
@@ -56,17 +58,24 @@ export const Portfolio = (): JSX.Element => {
 
   // Handle scroll to section when navigating from detail page
   useEffect(() => {
-    const scrollToId = (location.state as any)?.scrollTo;
-    if (scrollToId) {
-      // Small delay to ensure page is rendered
-      setTimeout(() => {
-        const element = document.getElementById(scrollToId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 300);
-    }
-  }, [location.state]);
+    const scrollState = location.state as { scrollTo?: string } | null;
+    const scrollToId = scrollState?.scrollTo;
+
+    if (!scrollToId) return;
+
+    // Small delay to ensure page is rendered
+    const timeoutId = window.setTimeout(() => {
+      const element = document.getElementById(scrollToId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Clear the state so future refreshes don't re-scroll
+      navigate(location.pathname, { replace: true, state: {} });
+    }, 300);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [location.pathname, location.state, navigate]);
 
   return (
     <div className={`${theme === 'dark' ? 'bg-[#161513]' : 'bg-gray-100'} w-full overflow-x-hidden`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -75,7 +84,7 @@ export const Portfolio = (): JSX.Element => {
       <div className="px-4 mx-auto max-w-7xl">
         {/* Profile Section */}
         <div id="home" className="flex flex-col items-center pt-20 mt-24 w-full md:px-6">
-          <div className="relative w-64 h-56">
+          <ScrollReveal className="relative w-64 h-56">
             {/* Circular background for avatar that matches the gradient text color */}
             <div className="absolute w-52 h-52 rounded-full" style={{
               background: 'linear-gradient(90deg, rgba(166,108,255,0.8) 0%, rgba(255,134,96,0.8) 100%)',
@@ -114,10 +123,10 @@ export const Portfolio = (): JSX.Element => {
               }}
             />
           )}
-          </div>
+          </ScrollReveal>
 
           {/* Main Title */}
-          <div className="mt-10 w-full text-center">
+          <ScrollReveal className="mt-10 w-full text-center">
             {isRTL ? (
               <h1 className="flex flex-col gap-2 items-center text-4xl font-bold md:text-5xl lg:text-6xl">
                 <span>{t('codeAndTeach')}</span>
@@ -131,17 +140,17 @@ export const Portfolio = (): JSX.Element => {
                 <span className="gradient-text text-[#a66cff]">{t('doItToo')}</span>
               </h1>
             )}
-          </div>
+          </ScrollReveal>
 
           {/* Bio Text */}
-          <div className="mt-16 w-full max-w-2xl">
+          <ScrollReveal delay={0.1} className="mt-16 w-full max-w-2xl">
             <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed ${isRTL ? 'text-right' : 'text-center'}`}>
               {t('bioText')}
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Call to Action */}
-          <div className="flex flex-col gap-4 items-center mt-12">
+          <ScrollReveal delay={0.2} className="flex flex-col gap-4 items-center mt-12">
             <button
               onClick={() => window.open('https://wa.me/21650011366', '_blank')}
               className={`group relative px-8 py-5 rounded-full font-sans text-xl font-bold overflow-hidden transition-all duration-300 hover:scale-110 hover:shadow-2xl ${
@@ -173,19 +182,22 @@ export const Portfolio = (): JSX.Element => {
             <p className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} animate-fade-in`}>
               {t('whatsappSubtext')}
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Experience With Section */}
           <div className="mt-16 w-full">
-            <h3 className={`font-sans font-semibold ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-xl tracking-wider text-center`}>
+            <ScrollReveal className="w-full">
+              <h3 className={`font-sans font-semibold ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-xl tracking-wider text-center`}>
               {t('experienceWith')}
             </h3>
+            </ScrollReveal>
 
             {/* Tech Icons */}
             <div className="flex flex-wrap gap-8 justify-center items-start mt-8 md:gap-12 lg:gap-16">
               {techIcons.map((tech, index) => (
-                <div 
+                <ScrollReveal
                   key={index} 
+                  delay={0.05 * index}
                   className={`flex flex-col items-center justify-center p-4 rounded-lg ${
                     theme === 'dark' 
                       ? 'bg-[#161513] hover:opacity-80' 
@@ -202,47 +214,47 @@ export const Portfolio = (): JSX.Element => {
                   <span className={`text-xs font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                     {tech.name}
                   </span>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
 
           {/* Projects Section Title */}
-          <div id="projects" className="pt-10 mt-16 w-full text-center">
+          <ScrollReveal id="projects" className="pt-10 mt-16 w-full text-center">
             <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-orange md:text-4xl">
               {t('projectsTitle')}
             </h2>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Projects Section */}
-        <div className="px-4 w-full md:px-6">
+        <ScrollReveal className="px-4 w-full md:px-6" amount={0.1}>
           <ProjectSection />
-        </div>
+        </ScrollReveal>
 
         {/* Experience Section Title */}
-        <div id="experience" className="flex justify-center pt-10 mt-16 w-full text-center">
+        <ScrollReveal id="experience" className="flex justify-center pt-10 mt-16 w-full text-center">
           <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-blue md:text-4xl">
             {t('experienceTitle')}
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Experience Section */}
-        <div className="w-full">
+        <ScrollReveal className="w-full" amount={0.15}>
           <ExperienceSection />
-        </div>
+        </ScrollReveal>
 
         {/* Testimonials Section Title */}
-        <div id="testimonials" className="flex justify-center pt-10 mt-16 w-full text-center">
+        <ScrollReveal id="testimonials" className="flex justify-center pt-10 mt-16 w-full text-center">
           <h2 className="inline-block mb-10 font-sans text-3xl font-extrabold gradient-text-orange md:text-4xl">
             {t('testimonialsTitle')}
           </h2>
-        </div>
+        </ScrollReveal>
 
         {/* Testimonials Section */}
-        <div className="w-full">
+        <ScrollReveal className="w-full" amount={0.15}>
           <TestimonialCarouselSection />
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Footer */}

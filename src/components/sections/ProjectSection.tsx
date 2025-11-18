@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { ExternalLink } from "lucide-react";
+import { ScrollReveal } from "../ui/scroll-reveal";
 
 export const ProjectSection = (): JSX.Element => {
   const { t, i18n } = useTranslation();
@@ -63,8 +64,8 @@ export const ProjectSection = (): JSX.Element => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 w-full max-w-7xl mx-auto">
       {projects.map((project, index) => (
+        <ScrollReveal key={index} delay={index * 0.1} className="h-full">
         <Card 
-          key={index} 
           onClick={(e) => handleCardClick(project.id, e)}
           className={`overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${
             theme === 'dark' 
@@ -151,6 +152,7 @@ export const ProjectSection = (): JSX.Element => {
             </div>
           </div>
         </Card>
+        </ScrollReveal>
       ))}
     </div>
   );
