@@ -125,7 +125,7 @@ export const TestimonialCarouselSection = (): JSX.Element => {
   return (
     <ScrollReveal
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="px-4 md:px-6 mt-4 w-full max-w-5xl mx-auto"
+      className="px-4 mx-auto mt-4 w-full max-w-5xl md:px-6"
       amount={0.15}
       delay={0.1}
     >
@@ -165,11 +165,11 @@ export const TestimonialCarouselSection = (): JSX.Element => {
               </div>
 
               {/* Testimonial Text */}
-              <div className="flex-1 flex items-center justify-center">
+              <div className="flex flex-1 justify-center items-center">
                 <p 
                   className={`text-base md:text-lg leading-relaxed text-center max-h-[280px] md:max-h-[240px] overflow-y-auto ${
                     theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                  } ${isRTL ? 'text-right' : 'text-left'} md:text-center`}
+                  } ${isRTL ? 'text-left' : 'text-left'} md:text-center`}
                   style={{ direction: isRTL ? 'rtl' : 'ltr' }}
                 >
                   "{testimonials[currentIndex].text}"
@@ -183,7 +183,7 @@ export const TestimonialCarouselSection = (): JSX.Element => {
               <div className="w-20 h-1 mx-auto mb-6 rounded-full bg-gradient-to-r from-[#a66cff] to-[#ff8660]"></div>
 
               {/* Author Info */}
-              <div className={`text-center ${isRTL ? 'text-right md:text-center' : 'text-left md:text-center'}`}>
+              <div className={`text-center ${isRTL ? 'text-left md:text-center' : 'text-left md:text-center'}`}>
                 <h4 className={`font-bold text-xl mb-1 ${
                   theme === 'dark' ? 'text-white' : 'text-gray-800'
                 }`}>
@@ -263,7 +263,7 @@ export const TestimonialCarouselSection = (): JSX.Element => {
       </div>
 
       {/* Dots Navigation */}
-      <div className="flex justify-center gap-3 mt-8">
+      <div className="flex gap-3 justify-center mt-8">
         {testimonials.map((_, index) => (
           <button
             key={index}

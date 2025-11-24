@@ -50,7 +50,7 @@ export const LanguageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div className="language-dropdown relative" ref={dropdownRef}>
+    <div className="relative language-dropdown" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-opacity-20 hover:bg-opacity-30 transition-colors"
@@ -79,7 +79,7 @@ export const LanguageSwitcher: React.FC = () => {
               className={`w-full text-left px-3 py-2 rounded-md text-sm ${i18n.language === lang.code 
                 ? (theme === 'dark' ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-900') 
                 : (theme === 'dark' ? 'text-white/90 hover:bg-gray-700' : 'text-gray-800 hover:bg-gray-100')
-              } ${isRTL && lang.code === 'ar' ? 'text-right' : ''}`}
+              } ${isRTL && lang.code === 'ar' ? 'text-left' : ''}`}
             >
               {lang.label}
             </button>

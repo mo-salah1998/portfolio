@@ -62,7 +62,7 @@ export const ProjectSection = (): JSX.Element => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4 w-full max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 gap-8 mx-auto mt-4 w-full max-w-7xl md:grid-cols-2">
       {projects.map((project, index) => (
         <ScrollReveal key={index} delay={index * 0.1} className="h-full">
         <Card 
@@ -73,8 +73,8 @@ export const ProjectSection = (): JSX.Element => {
               : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg'
           }`}
         >
-          <div className={`text-${isRTL ? 'right' : 'left'}`}>
-            <div className="w-full h-48 overflow-hidden">
+          <div className={`text-${isRTL ? 'left' : 'left'}`}>
+            <div className="overflow-hidden w-full h-48">
               <img
                 src={project.imageUrl}
                 alt={project.title}
@@ -83,7 +83,7 @@ export const ProjectSection = (): JSX.Element => {
                 width={437}
                 height={192}
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 437px"
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
               />
             </div>
             <div className="p-6">
@@ -94,7 +94,7 @@ export const ProjectSection = (): JSX.Element => {
                 {project.shortDescription}
               </p>
               
-              <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? 'justify-end' : 'justify-start'}`}>
+              <div className={`flex flex-wrap gap-2 mb-4 ${isRTL ? 'justify-start' : 'justify-start'}`}>
                 {project.technologies.map((tech, idx) => (
                   <span 
                     key={idx} 
@@ -133,7 +133,7 @@ export const ProjectSection = (): JSX.Element => {
                     variant="gradient"
                     size="lg"
                     asChild
-                    className="group relative overflow-hidden"
+                    className="overflow-hidden relative group"
                   >
                     <a 
                       href={project.liveUrl} 
@@ -141,7 +141,7 @@ export const ProjectSection = (): JSX.Element => {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <ExternalLink className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
+                      <ExternalLink className="mr-2 w-4 h-4 transition-transform group-hover:scale-110" />
                       Live Demo
                       {/* Animated background on hover */}
                       <div className="absolute inset-0 bg-gradient-to-r from-[#ff8660] to-[#a66cff] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>

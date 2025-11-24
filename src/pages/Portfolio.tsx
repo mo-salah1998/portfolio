@@ -144,7 +144,7 @@ export const Portfolio = (): JSX.Element => {
 
           {/* Bio Text */}
           <ScrollReveal delay={0.1} className="mt-16 w-full max-w-2xl">
-            <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed ${isRTL ? 'text-right' : 'text-center'}`}>
+            <p className={`font-sans font-light ${theme === 'dark' ? 'text-secondary-text' : 'text-gray-700'} text-lg leading-relaxed ${isRTL ? 'text-left' : 'text-center'}`}>
               {t('bioText')}
             </p>
           </ScrollReveal>
