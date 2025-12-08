@@ -17,6 +17,7 @@ export const CustomCursor: React.FC = () => {
   const [cursorState, setCursorState] = useState<'default' | 'hover' | 'click' | 'text'>('default');
   const [trails, setTrails] = useState<CursorTrail[]>([]);
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   
   // Refs for smooth interpolation
   const mousePos = useRef<Position>({ x: 0, y: 0 });
@@ -210,7 +211,34 @@ export const CustomCursor: React.FC = () => {
     setIsVisible(false);
   }, []);
 
+  // Detect mobile/touch devices
   useEffect(() => {
+    const checkMobile = () => {
+      // Check for touch capability
+      const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      // Check for mobile screen size (optional, as touch detection is more reliable)
+      const isSmallScreen = window.innerWidth <= 768;
+      // Check user agent for mobile devices
+      const isMobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      return hasTouch || (isSmallScreen && isMobileUserAgent);
+    };
+
+    setIsMobile(checkMobile());
+
+    // Also check on resize in case device orientation changes
+    const handleResize = () => {
+      setIsMobile(checkMobile());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Don't initialize cursor on mobile devices
+    if (isMobile) return;
+
     // Initialize cursor position
     cursorPos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     mousePos.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -257,7 +285,7 @@ export const CustomCursor: React.FC = () => {
       window.removeEventListener('focus', handleWindowFocus);
       window.removeEventListener('blur', handleWindowBlur);
     };
-  }, [updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave, handleDocumentMouseEnter, handleDocumentMouseLeave, handleVisibilityChange, handleWindowFocus, handleWindowBlur]);
+  }, [isMobile, updateCursorPosition, handleMouseMove, handleMouseOver, handleMouseDown, handleMouseUp, handleMouseEnter, handleMouseLeave, handleDocumentMouseEnter, handleDocumentMouseLeave, handleVisibilityChange, handleWindowFocus, handleWindowBlur]);
 
   // Cleanup old trails periodically and check cursor state
   useEffect(() => {
@@ -281,6 +309,9 @@ export const CustomCursor: React.FC = () => {
     
     return () => clearInterval(cleanup);
   }, [isVisible, updateCursorPosition]);
+
+  // Don't render cursor on mobile/touch devices
+  if (isMobile) return null;
 
   if (!isVisible) return null;
 

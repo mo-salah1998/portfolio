@@ -67,7 +67,7 @@ export const ProjectSection = (): JSX.Element => {
         <ScrollReveal key={index} delay={index * 0.1} className="h-full">
         <Card 
           onClick={(e) => handleCardClick(project.id, e)}
-          className={`overflow-hidden cursor-pointer-mouse transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${
+          className={`overflow-hidden cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-xl ${
             theme === 'dark' 
               ? 'bg-[#252525] border-gray-700 hover:border-gray-600' 
               : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-lg'

@@ -465,18 +465,4 @@ a, button, input, textarea, select, [role="button"], [tabindex] {
               transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translate(-50%, -50%);
   will-change: transform, opacity;
-}
-
-/* Cursor pointer only for devices with mouse */
-@media (hover: hover) and (pointer: fine) {
-  .cursor-pointer-mouse {
-    cursor: pointer !important;
-  }
-}
-
-/* Ensure no cursor pointer on touch devices */
-@media (hover: none) or (pointer: coarse) {
-  .cursor-pointer-mouse {
-    cursor: default !important;
-  }
 } 
