@@ -70,6 +70,26 @@ export const ProjectDetail = (): JSX.Element => {
         liveUrl: t('project4.liveUrl'),
       };
     }
+    if (projectId === '5' || projectId === 'wefix') {
+      return {
+        id: '5',
+        title: t('project5.title'),
+        description: t('project5.description'),
+        imageUrl: '/wefix.png',
+        technologies: t('project5.technologies').split(', '),
+        liveUrl: t('project5.liveUrl'),
+      };
+    }
+    if (projectId === '6' || projectId === 'gestion-certif') {
+      return {
+        id: '6',
+        title: t('project6.title'),
+        description: t('project6.description'),
+        imageUrl: '/certif.png',
+        technologies: t('project6.technologies').split(', '),
+        liveUrl: t('project6.liveUrl'),
+      };
+    }
     return null;
   };
 
@@ -248,7 +268,7 @@ export const ProjectDetail = (): JSX.Element => {
           {/* Right Side: Key Contributions & Technologies */}
           <div className={`${isRTL ? 'lg:order-1' : ''}`}>
             {/* Key Contributions - For projects with Key Contributions section */}
-            {(project.id === '3' || project.id === '4') && (
+            {(project.id === '3' || project.id === '4' || project.id === '5' || project.id === '6') && (
               <div className="mb-8">
                 <h2 className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
                   {t('keyContributions')}
@@ -259,7 +279,7 @@ export const ProjectDetail = (): JSX.Element => {
                     : 'bg-white border border-gray-200'
                 }`}>
                   <ul className="space-y-3">
-                    {project.description.split('\n\nKey Contributions:')[1]?.split('\n•').slice(1).map((contribution, idx) => (
+                    {project.description.split(`\n\n${t('keyContributions')}:`)[1]?.split('\n•').slice(1).map((contribution, idx) => (
                       contribution.trim() && (
                         <li key={idx} className={`flex items-start gap-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                           <span className={`mt-2 w-2 h-2 rounded-full ${

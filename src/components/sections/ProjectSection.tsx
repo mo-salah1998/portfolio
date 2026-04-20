@@ -16,6 +16,24 @@ export const ProjectSection = (): JSX.Element => {
   // Project data from translations (reversed order)
   const projects = [
     {
+      id: '6',
+      title: t('project6.title'),
+      shortDescription: t('project6.shortDescription'),
+      imageUrl: "/certif.png",
+      technologies: t('project6.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: t('project6.liveUrl'),
+    },
+    {
+      id: '5',
+      title: t('project5.title'),
+      shortDescription: t('project5.shortDescription'),
+      imageUrl: "/wefix.png",
+      technologies: t('project5.technologies').split(', ').slice(0, 3), // Show only first 3
+      githubUrl: "",
+      liveUrl: t('project5.liveUrl'),
+    },
+    {
       id: '4',
       title: t('project4.title'),
       shortDescription: t('project4.shortDescription'),
@@ -107,22 +125,13 @@ export const ProjectSection = (): JSX.Element => {
                     {tech}
                   </span>
                 ))}
-                {((project.id === '1' && t('project1.technologies').split(', ').length > 3) ||
-                  (project.id === '2' && t('project2.technologies').split(', ').length > 3) ||
-                  (project.id === '3' && t('project3.technologies').split(', ').length > 3) ||
-                  (project.id === '4' && t('project4.technologies').split(', ').length > 3)) && (
+                {t(`project${project.id}.technologies`).split(', ').length > 3 && (
                   <span className={`px-2 py-1 text-xs rounded-full ${
                     theme === 'dark' 
                       ? 'bg-gray-700 text-gray-300' 
                       : 'bg-gray-200 text-gray-700'
                   }`}>
-                    +{(project.id === '1' 
-                      ? t('project1.technologies').split(', ').length - 3
-                      : project.id === '2'
-                      ? t('project2.technologies').split(', ').length - 3
-                      : project.id === '3'
-                      ? t('project3.technologies').split(', ').length - 3
-                      : t('project4.technologies').split(', ').length - 3)}
+                    +{t(`project${project.id}.technologies`).split(', ').length - 3}
                   </span>
                 )}
               </div>

@@ -147,6 +147,20 @@ const enTranslations = {
     impact: 'Impact',
     impactDescription: 'The website successfully supported the visibility and registration process of a multi-country cybersecurity event. It enhanced outreach, simplified participant registration, and presented a professional digital identity for the organizing team and its partners.',
   },
+  project5: {
+    title: 'WeFix',
+    shortDescription: 'Comprehensive phone repair and trade-in platform.',
+    description: 'A responsive web application for phone repairs, device trade-ins, and the sale of reconditioned devices. Features secure login, real-time repair tracking, device evaluation for trade-ins, and a full e-commerce marketplace.\n\nKey Contributions:\n• Built a responsive frontend using Next.js 15 and React 19\n• Developed a robust backend with Node.js and Express\n• Implemented real-time status updates using Socket.IO\n• Integrated secure JWT authentication and role-based access\n• Designed a comprehensive admin dashboard for inventory and request management',
+    technologies: 'Next.js 15, React 19, Node.js, Express, MongoDB, Socket.IO, Tailwind CSS',
+    liveUrl: '',
+  },
+  project6: {
+    title: 'GestionCertif - ODC',
+    shortDescription: 'Professional certification platform with automated PDF generation and session management.',
+    description: 'A robust platform built for Orange Digital Center to manage training sessions and automate certification. It handles participant tracking via QR code attendance, dynamic feedback collection, and high-quality PDF generation for professional certificates.\n\nKey Contributions:\n• Engineered a high-performance PDF generation engine using Puppeteer and NestJS\n• Implemented QR-based attendance tracking for secure session management\n• Built a multi-step, multi-language feedback system for session evaluation\n• Developed a scalable architecture using Next.js 15, NestJS 11, and Prisma\n• Integrated automated email distribution for instant certificate delivery',
+    technologies: 'Next.js 15, NestJS 11, Prisma, PostgreSQL, Puppeteer, Tailwind CSS, TypeScript',
+    liveUrl: '',
+  },
   // Common project labels
   viewDetails: 'View Details',
   backToProjects: 'Back to Projects',
@@ -300,6 +314,20 @@ const frTranslations = {
     impact: 'Impact',
     impactDescription: 'Le site web a réussi à soutenir la visibilité et le processus d\'inscription d\'un événement de cybersécurité multi-pays. Il a amélioré la portée, simplifié l\'inscription des participants et présenté une identité numérique professionnelle pour l\'équipe organisatrice et ses partenaires.',
   },
+  project5: {
+    title: 'WeFix',
+    shortDescription: 'Plateforme complète de réparation et de reprise de téléphones.',
+    description: 'Une application web responsive pour les réparations de téléphones, les reprises d\'appareils et la vente d\'appareils reconditionnés. Comprend une connexion sécurisée, un suivi des réparations en temps réel, une évaluation des appareils pour les reprises et une place de marché e-commerce.\n\nContributions Clés:\n• Construction d\'un frontend réactif utilisant Next.js 15 et React 19\n• Développement d\'un backend robuste avec Node.js et Express\n• Implémentation des mises à jour de statut en temps réel via Socket.IO\n• Intégration d\'une authentification JWT sécurisée et d\'un accès basé sur les rôles\n• Conception d\'un tableau de bord administratif complet pour la gestion des stocks et des demandes',
+    technologies: 'Next.js 15, React 19, Node.js, Express, MongoDB, Socket.IO, Tailwind CSS',
+    liveUrl: '',
+  },
+  project6: {
+    title: 'GestionCertif - ODC',
+    shortDescription: 'Plateforme de certification professionnelle avec génération automatisée de PDF et gestion de sessions.',
+    description: 'Une plateforme robuste conçue pour Orange Digital Center afin de gérer les sessions de formation et automatiser la certification. Elle gère le suivi des participants via la présence par QR code, la collecte de feedbacks dynamiques et la génération de PDF haute qualité pour les certificats professionnels.\n\nContributions Clés:\n• Conception d\'un moteur de génération de PDF haute performance utilisant Puppeteer et NestJS\n• Mise en œuvre du suivi de présence par QR code pour une gestion sécurisée des sessions\n• Construction d\'un système de feedback multi-étapes et multilingue pour l\'évaluation des sessions\n• Développement d\'une architecture évolutive utilisant Next.js 15, NestJS 11 et Prisma\n• Intégration de la distribution automatisée d\'e-mails pour l\'envoi instantané des certificats',
+    technologies: 'Next.js 15, NestJS 11, Prisma, PostgreSQL, Puppeteer, Tailwind CSS, TypeScript',
+    liveUrl: '',
+  },
   // Common project labels
   viewDetails: 'Voir les détails',
   backToProjects: 'Retour aux projets',
@@ -452,6 +480,20 @@ const arTranslations = {
     technologiesTitle: 'المجموعة التقنية والأدوات',
     impact: 'التأثير',
     impactDescription: 'نجح الموقع في دعم عملية الظهور والتسجيل لحدث أمن سيبراني متعدد البلدان. عزز النطاق، ويسر تسجيل المشاركين، وقدم هوية رقمية مهنية لفريق التنظيم وشركائه.',
+  },
+  project5: {
+    title: 'WeFix',
+    shortDescription: 'منصة شاملة لإصلاح واستبدال الهواتف.',
+    description: 'تطبيق ويب متجاوب لإصلاح الهواتف واستبدال الأجهزة وبيع الأجهزة المجددة. يتميز بتسجيل دخول آمن، وتتبع الإصلاح في الوقت الفعلي، وتقييم الأجهزة للاستبدال، وسوق تجارة إلكترونية كامل.\n\nالمساهمات الرئيسية:\n• بناء واجهة أمامية متجاوبة باستخدام Next.js 15 و React 19\n• تطوير واجهة خلفية قوية باستخدام Node.js و Express\n• تنفيذ تحديثات الحالة في الوقت الفعلي باستخدام Socket.IO\n• دمج مصادقة JWT آمنة ووصول قائم على الأدوار\n• تصميم لوحة تحكم إدارية شاملة لإدارة المخزون والطلبات',
+    technologies: 'Next.js 15, React 19, Node.js, Express, MongoDB, Socket.IO, Tailwind CSS',
+    liveUrl: '',
+  },
+  project6: {
+    title: 'GestionCertif - ODC',
+    shortDescription: 'منصة إصدار شهادات مهنية مع إنشاء تلقائي لملفات PDF وإدارة الدورات.',
+    description: 'منصة قوية تم بناؤها لمركز أورانج الرقمي لإدارة الدورات التدريبية وأتمتة إصدار الشهادات. تتعامل مع تتبع المشاركين عبر حضور رمز QR، وجمع التقييمات الديناميكية، وإنشاء ملفات PDF عالية الجودة للشهادات المهنية.\n\nالمساهمات الرئيسية:\n• هندسة محرك إنشاء PDF عالي الأداء باستخدام Puppeteer و NestJS\n• تنفيذ تتبع الحضور القائم على QR لإدارة الدورات بشكل آمن\n• بناء نظام تقييم متعدد الخطوات واللغات لتقييم الدورات\n• تطوير بنية قابلة للتوسع باستخدام Next.js 15 و NestJS 11 و Prisma\n• دمج التوزيع الآلي للبريد الإلكتروني لتسليم الشهادات فورياً',
+    technologies: 'Next.js 15, NestJS 11, Prisma, PostgreSQL, Puppeteer, Tailwind CSS, TypeScript',
+    liveUrl: '',
   },
   // Common project labels
   viewDetails: 'عرض التفاصيل',
